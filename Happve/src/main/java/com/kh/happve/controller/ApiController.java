@@ -1,5 +1,13 @@
 package com.kh.happve.controller;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import com.kh.happve.entity.RestaurantApi;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +18,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.List;
 
 
 @RestController
@@ -27,8 +36,6 @@ public class ApiController {
 	        urlBuilder.append("/" + 1); //*한 페이지 결과 수*/
 	        urlBuilder.append("/" + 5+ "/"); /*페이지번호*/
 
-
-
 	        System.out.println(urlBuilder.toString());
 	        URL url = new URL(urlBuilder.toString());
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -45,11 +52,46 @@ public class ApiController {
 	        }	
 	        rd.close();
 	        conn.disconnect();
+
+			ObjectMapper objectMapper = null;
+			String mappedValue = null;
+			String upso_nm = null;
+			List<RestaurantApi> restaurant = null;
+			JsonNode jsonNode = null;
+
+
+			JSONParser jsonParser = new JSONParser();
+			JSONObject jsonObject = (JSONObject)jsonParser.parse(result.toString());
+			JSONObject CrtfcUpsoInfo = (JSONObject) jsonObject.get("CrtfcUpsoInfo");
+			JSONArray row = (JSONArray) CrtfcUpsoInfo.get("row");
+			//JSONObject row1 = (JSONObject) row.get(0);
+
+			for(int i=0; i<row.size(); i++) {
+				JSONObject row1 = (JSONObject) row.get(i);
+				for (int j = 0; j < row1.size(); j++) {
+					objectMapper = new ObjectMapper();
+					mappedValue = objectMapper.writeValueAsString(row1);
+					jsonNode = objectMapper.readTree(mappedValue);
+					upso_nm = jsonNode.get("UPSO_NM").asText();
+
+				}
+					System.out.println(upso_nm);
+					System.out.println(mappedValue);
+			}
+		/*		List<RestaurantApi> restaurantApilist = objectMapper.convertValue(jsonNode, new TypeReference<List<RestaurantApi>>() {});
+				System.out.println(restaurantApilist);*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-        return result + "";
+
+/*			ObjectMapper objectMapper = new ObjectMapper();
+			String mappedValue = objectMapper.writeValueAsString(result);
+			RestaurantEntity restaurantEntity = objectMapper.readValue(mappedValue, RestaurantEntity.class);*/
+
+
+
+		return result + "";
         
 	}
 
