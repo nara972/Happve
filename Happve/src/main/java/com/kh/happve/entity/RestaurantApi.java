@@ -1,5 +1,6 @@
 package com.kh.happve.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,10 +12,11 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "restaurant_api")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RestaurantApi {
 
     @Id
@@ -22,7 +24,7 @@ public class RestaurantApi {
     @Column
     private Integer crtfc_upso_mgt_sno;  //식당 고유 id ( 식품 인증 업소 관리 일련 번호)
 
-    private Integer upso_sno; //업소 번호
+    private String upso_sno; //업소 번호
 
     @NotBlank
     private String upso_nm;  //업소명
@@ -33,6 +35,7 @@ public class RestaurantApi {
     @NotBlank
     private String cgg_code_nm;  //자치구 명
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private String cob_code_nm; //업종명
 
     @Column(nullable=true)

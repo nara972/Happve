@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.kh.happve.entity.RestaurantApi;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -18,6 +19,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -28,15 +30,16 @@ public class ApiController {
 	@GetMapping("/basic")
 	public String basic() {
 		StringBuffer result = new StringBuffer();
+		RestaurantApi ra = null;
 		try {
 	        StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088"); /*URL 각팀별로 가져오려는 공공데이터 엔드포인트 주소 , 샘플-무더위쉼터 엔드포인트*/
 	        urlBuilder.append("/" + "6f4a424463716c773834794d516d44"); /*Service Key 공공데이터포털에서 받은 인증키*/
 	        urlBuilder.append("/" + URLEncoder.encode("json", "UTF-8")); /*호출문서 형태*/
 	        urlBuilder.append("/" + URLEncoder.encode("CrtfcUpsoInfo", "UTF-8")); /*서비스명*/
 	        urlBuilder.append("/" + 1); //*한 페이지 결과 수*/
-	        urlBuilder.append("/" + 5+ "/"); /*페이지번호*/
+			urlBuilder.append("/" + 5); /*페이지번호*/
+			//urlBuilder.append("/" + 9657+ "/"); /*페이지번호*/
 
-	        System.out.println(urlBuilder.toString());
 	        URL url = new URL(urlBuilder.toString());
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	        conn.setRequestMethod("GET");
@@ -55,8 +58,6 @@ public class ApiController {
 
 			ObjectMapper objectMapper = null;
 			String mappedValue = null;
-			String upso_nm = null;
-			List<RestaurantApi> restaurant = null;
 			JsonNode jsonNode = null;
 
 
@@ -64,34 +65,84 @@ public class ApiController {
 			JSONObject jsonObject = (JSONObject)jsonParser.parse(result.toString());
 			JSONObject CrtfcUpsoInfo = (JSONObject) jsonObject.get("CrtfcUpsoInfo");
 			JSONArray row = (JSONArray) CrtfcUpsoInfo.get("row");
-			//JSONObject row1 = (JSONObject) row.get(0);
 
 			for(int i=0; i<row.size(); i++) {
 				JSONObject row1 = (JSONObject) row.get(i);
 				for (int j = 0; j < row1.size(); j++) {
 					objectMapper = new ObjectMapper();
 					mappedValue = objectMapper.writeValueAsString(row1);
+					ra = objectMapper.readValue(mappedValue, RestaurantApi.class);
 					jsonNode = objectMapper.readTree(mappedValue);
-					upso_nm = jsonNode.get("UPSO_NM").asText();
-
 				}
-					System.out.println(upso_nm);
-					System.out.println(mappedValue);
+				Iterator<JsonNode> itr = jsonNode.iterator();
+
+				int crtfc_upso_mgt_sno = jsonNode.get("CRTFC_UPSO_MGT_SNO").asInt();
+				String upso_sno = jsonNode.get("UPSO_SNO").asText();
+				String upso_nm = jsonNode.get("UPSO_NM").asText();
+				String cgg_code = jsonNode.get("CGG_CODE").asText();
+				String cgg_code_nm = jsonNode.get("CGG_CODE_NM").asText();
+				String cob_code_nm = jsonNode.get("COB_CODE_NM").asText();
+				String bizcnd_code_nm = jsonNode.get("BIZCND_CODE_NM").asText();
+				String owner_nm = jsonNode.get("OWNER_NM").asText();
+				String crtfc_gbn = jsonNode.get("CRTFC_GBN").asText();
+				String crtfc_gbn_nm = jsonNode.get("CRTFC_GBN_NM").asText();
+				String crtfc_chr_nm = jsonNode.get("CRTFC_CHR_NM").asText();
+				String crtfc_chr_id = jsonNode.get("CRTFC_CHR_ID").asText();
+				String crtfc_ymd = jsonNode.get("CRTFC_YMD").asText();
+				String use_yn = jsonNode.get("USE_YN").asText();
+				String map_indict_yn = jsonNode.get("MAP_INDICT_YN").asText();
+				String crtfc_class = jsonNode.get("CRTFC_CLASS").asText();
+				String y_dnts = jsonNode.get("Y_DNTS").asText();
+				String x_cnts = jsonNode.get("X_CNTS").asText();
+				String tel_no = jsonNode.get("TEL_NO").asText();
+				String rdn_detail_addr = jsonNode.get("RDN_DETAIL_ADDR").asText();
+				String rdn_addr_code = jsonNode.get("RDN_ADDR_CODE").asText();
+				String rdn_code_nm = jsonNode.get("RDN_CODE_NM").asText();
+				String bizcnd_code = jsonNode.get("BIZCND_CODE").asText();
+				String cob_code = jsonNode.get("COB_CODE").asText();
+				String crtfc_sno = jsonNode.get("CRTFC_SNO").asText();
+				String crt_time = jsonNode.get("CRT_TIME").asText();
+				String crt_usr = jsonNode.get("CRT_USR").asText();
+				String upd_time = jsonNode.get("UPD_TIME").asText();
+				String food_menu = jsonNode.get("FOOD_MENU").asText();
+				String gnt_no = jsonNode.get("GNT_NO").asText();
+				String crtfc_yn = jsonNode.get("CRTFC_YN").asText();
+
+				ra.setCrtfc_upso_mgt_sno(crtfc_upso_mgt_sno);
+				ra.setUpso_sno(upso_sno);
+				ra.setUpso_nm(upso_nm);
+				ra.setCgg_code(cgg_code);
+				ra.setCgg_code_nm(cgg_code_nm);
+				ra.setCob_code_nm(cob_code_nm);
+				ra.setBizcnd_code_nm(bizcnd_code_nm);
+				ra.setCrtfc_gbn(crtfc_gbn);
+				ra.setCrtfc_gbn_nm(crtfc_gbn_nm);
+				ra.setCrtfc_chr_id(crtfc_chr_id);
+				ra.setCrtfc_ymd(crtfc_ymd);
+				ra.setUse_yn(use_yn);
+				ra.setMap_indict_yn(map_indict_yn);
+				ra.setCrtfc_class(crtfc_class);
+				ra.setY_dnts(y_dnts);
+				ra.setX_cnts(x_cnts);
+				ra.setTel_no(tel_no);
+				ra.setRdn_detail_addr(rdn_detail_addr);
+				ra.setRdn_addr_code(rdn_addr_code);
+				ra.setRdn_code_nm(rdn_code_nm);
+				ra.setBizcnd_code(bizcnd_code);
+				ra.setCob_code(cob_code);
+				ra.setCrtfc_sno(crtfc_sno);
+				ra.setCrt_time(crt_time);
+				ra.setCrt_usr(crt_usr);
+				ra.setUpd_time(upd_time);
+
 			}
-		/*		List<RestaurantApi> restaurantApilist = objectMapper.convertValue(jsonNode, new TypeReference<List<RestaurantApi>>() {});
-				System.out.println(restaurantApilist);*/
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-
-/*			ObjectMapper objectMapper = new ObjectMapper();
-			String mappedValue = objectMapper.writeValueAsString(result);
-			RestaurantEntity restaurantEntity = objectMapper.readValue(mappedValue, RestaurantEntity.class);*/
-
-
-
-		return result + "";
+		return ra + "";
         
 	}
 
