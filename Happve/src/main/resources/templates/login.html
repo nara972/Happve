@@ -6,9 +6,9 @@
     <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
     <meta name="og:type" content="website" />
     <meta name="twitter:card" content="photo" />
-    <link rel="stylesheet" type="text/css" href="login/css/login.css" />
-    <link rel="stylesheet" type="text/css" href="login/css/styleguide.css" />
-    <link rel="stylesheet" type="text/css" href="login/css/globals.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{css/login/css/login.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{css/login/css/styleguide.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{css/login/css/globals.css}" />
     <meta name="author" content="AnimaApp.com - Design to code, Automated." />
   </head>
   <body style="margin: 0; background: #ffffff">
@@ -45,7 +45,7 @@
           <!-- 검색 -->
           <form action="" method="post">
             <button class="seachbutton"><div class="searchbuttontext">Search</div></button>
-            <input type="text" class="searchtextbox" value="지역,식당 또는 음식"><img class="textext" src="login/img/textext@1x.png" /></input>
+            <input type="text" class="searchtextbox" value="지역,식당 또는 음식"><img class="textext" src="css/login/img/textext@1x.png" /></input>
           </form>
         </div>
 
@@ -65,7 +65,7 @@
               <form action="" method="post">
                 <input type="text" class="idinputext" value="ID를 입력하세요"></input>
               
-                <img class="line9" src="login/img/line18@1x.png" />
+                <img class="line9" src="css/login/img/line18@1x.png" />
               </div>
 
             <div class="passinput">
@@ -74,7 +74,7 @@
                 <input type="password" class="passinputext" value="비밀번호를 입력하세요"></input>
               </form>
 
-              <img class="line18" src="login/img/line18@1x.png" />
+              <img class="line18" src="css/login/img/line18@1x.png" />
             </div>
 
             <form action="" method="post">
