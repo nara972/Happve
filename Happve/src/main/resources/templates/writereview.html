@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="writereview/css/writereview.css" />
+    <link rel="stylesheet" type="text/css" href="writereview/css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="writereview/css/globals.css" />
+    <meta name="author" content="AnimaApp.com - Design to code, Automated." />
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="writereview" />
+    <div class="container-center-horizontal">
+      <div class="writereview screen">
+
+        <div class="overlap-group1">
+          
+          <!-- 헤더 -->
+          <header class="header">
+            <form action="" method="post">
+              <button type="" class="title">Happve</button>
+            </form>
+            <form action="" method="post">
+              <button type="" class="commu">평점 및 리뷰</button>
+            </form>
+            <form action="" method="post">
+              <button type="" class="signup">회원가입</button>
+            </form>
+            <form action="" method="post">
+              <button type="" class="con">건의하기</button>
+            </form>
+            <form action="" method="post">
+              <button type="" class="login">
+                <div class="overlap-group2">
+                  <div class="loginbutton"></div>
+                  <div class="logintext applesdgothicneo-bold-rhino-18px">로그인</div>
+                </div>
+              </button>
+            </form>
+          </header>
+
+          <!-- 헤더 검색 -->
+          <button class="searchbutton"><div class="search">Search</div></button>
+          <input type="text" class="searchbox" value="지역,식당 또는 음식">
+        </div>
+
+
+        <div class="overlap-group-1">
+          <h1 class="title-1">#stop<br />Eating<br />meat</h1>
+          <div class="overlap-group2-1 border-1px-rhino-2">
+
+            <div class="text1">리뷰등록</div>
+            <div class="text2">식당에 대한 여러분의 의견 남겨주세요.</div>
+            <div class="ratingtext">얼만나 만족 하셨나요?</div>
+
+            <!-- 리뷰등록 폼 시작 -->
+            <form action="" method="post">
+
+              <!-- 별점 -->
+              <div class="rating">
+                <!-- <img class="starfill" src="img/starfill-1@1x.png" />
+                <img class="star" src="img/starfill-1@1x.png" />
+                <img class="star" src="img/staroutline-1@1x.png" />
+                <img class="star" src="img/staroutline-1@1x.png" />
+                <img class="star" src="img/staroutline-1@1x.png" /> -->
+                
+                <div class="star-rating space-x-4 mx-auto">
+                  <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+                  <label for="5-stars" class="star pr-4">★</label>
+                  <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+                  <label for="4-stars" class="star">★</label>
+                  <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+                  <label for="3-stars" class="star">★</label>
+                  <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+                  <label for="2-stars" class="star">★</label>
+                  <input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
+                  <label for="1-star" class="star">★</label>
+                </div>
+
+
+              </div>
+  
+              <!-- 리뷰입력 박스 -->
+              <textarea type="text" class="writebox border-1px-rhino-2">리뷰를 입력하세요</textarea>
+  
+              <div class="picuploadtext">사진 업로드</div>
+  
+              <div class="flex-row">
+  
+                <!-- 사진파일선택 -->
+                <form action="" method="post">
+                  <input type="file" class="picupbox" accept=".png, .jpg">
+                  
+                  <button class="picupbutton">
+                    <div class="overlap-group5">
+                      <div class="picupback"></div>
+                      <div class="picuptext">파일등록</div>
+                    </div>
+                  </button>
+                </form>
+  
+              </div>
+              <!-- 선택된 파일 리스트 -->
+              <div class="picloadbox border-1px-rhino-2">
+                <p>file path</p>
+              </div>
+  
+              <div class="flex-row-1">
+  
+                <!-- 리뷰등록버튼 -->
+                <button class="uploadbutton">
+                  <div class="overlap-group">
+                    <div class="back"></div>
+                    <div class="text applesdgothicneo-bold-rhino-18px">등록하기</div>
+                  </div>
+                </button>
+
+            </form>
+            <!-- 리뷰등록 폼 끝 -->
+
+              <button class="cancelbutton">
+                <div class="overlap-group">
+                  <div class="back"></div>
+                  <div class="text applesdgothicneo-bold-rhino-18px">취소</div>
+                </div>
+              </button>
+
+            </div>
+          </div>
+        </div>
+
+
+        <footer class="footer">
+          <div class="x7"></div>
+          <div class="flex-row-2">
+            <div class="flex-row-3">
+              <div class="flex-row-4">
+                <div class="happve">Happve</div>
+                <div class="flex-col">
+                  <div class="contact-us komet-regular-normal-rhino-14px">CONTACT US</div>
+                  <div class="x4"></div>
+                  <p class="address komet-light-rhino-14px">
+                    123 Anywhere St.<br />Cityname, NY 11206<br />(123) 456-7890<br />contact@npo.org
+                  </p>
+                </div>
+              </div>
+              <div class="flex-col-1">
+                <div class="links komet-regular-normal-rhino-14px">LINKS</div>
+                <div class="x5"></div>
+                <p class="text-1 komet-light-rhino-14px">
+                  The issue<br />How we help<br />Get involved<br />Latest news
+                </p>
+              </div>
+            </div>
+            <div class="flex-col-2">
+              <div class="follow-us komet-regular-normal-rhino-14px">FOLLOW US</div>
+              <div class="x6"></div>
+              <div class="text-2 komet-light-rhino-14px">Facebook<br />Twitter<br />Instagram<br />Medium</div>
+            </div>
+            <div class="stopeatingm-eat">#stop<br />EATING<br />MEat</div>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  </body>
+</html>
