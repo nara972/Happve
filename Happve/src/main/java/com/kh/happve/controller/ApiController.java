@@ -1,11 +1,10 @@
 package com.kh.happve.controller;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.kh.happve.entity.RestaurantApi;
+import com.kh.happve.entity.Restaurant;
+import com.kh.happve.service.RestaurantService;
+import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,48 +12,48 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
 
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api")
 public class ApiController {
-	
-	@GetMapping("/basic")
-	public String basic() {
-		StringBuffer result = new StringBuffer();
-		RestaurantApi ra = null;
-		try {
-	        StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088"); /*URL 각팀별로 가져오려는 공공데이터 엔드포인트 주소 , 샘플-무더위쉼터 엔드포인트*/
-	        urlBuilder.append("/" + "6f4a424463716c773834794d516d44"); /*Service Key 공공데이터포털에서 받은 인증키*/
-	        urlBuilder.append("/" + URLEncoder.encode("json", "UTF-8")); /*호출문서 형태*/
-	        urlBuilder.append("/" + URLEncoder.encode("CrtfcUpsoInfo", "UTF-8")); /*서비스명*/
-	        urlBuilder.append("/" + 1); //*한 페이지 결과 수*/
-			urlBuilder.append("/" + 5); /*페이지번호*/
-			//urlBuilder.append("/" + 9657+ "/"); /*페이지번호*/
 
-	        URL url = new URL(urlBuilder.toString());
-	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-	        conn.setRequestMethod("GET");
-	        BufferedReader rd;
-	        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-	        	rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-	        } else {
-	        	rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-	        }
-	        String line;
-	        while ((line = rd.readLine()) != null) {
-	        	result.append(line + "\n");
-	        }	
-	        rd.close();
-	        conn.disconnect();
+	private final RestaurantService restaurantService;
+
+	@GetMapping("/basic")
+	public Restaurant basic() {
+		StringBuffer result = new StringBuffer();
+		Restaurant ra = null;
+		try {
+			StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088"); /*URL 각팀별로 가져오려는 공공데이터 엔드포인트 주소 , 샘플-무더위쉼터 엔드포인트*/
+			urlBuilder.append("/" + "6f4a424463716c773834794d516d44"); /*Service Key 공공데이터포털에서 받은 인증키*/
+			urlBuilder.append("/" + URLEncoder.encode("json", "UTF-8")); /*호출문서 형태*/
+			urlBuilder.append("/" + URLEncoder.encode("CrtfcUpsoInfo", "UTF-8")); /*서비스명*/
+			urlBuilder.append("/" + 1); //*한 페이지 결과 수*/
+			urlBuilder.append("/" + 5); /*페이지번호*/
+			urlBuilder.append("/" + 9657+ "/"); /*페이지번호*/
+
+			URL url = new URL(urlBuilder.toString());
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			BufferedReader rd;
+			if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+				rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+			} else {
+				rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+			}
+			String line;
+			while ((line = rd.readLine()) != null) {
+				result.append(line + "\n");
+			}
+			rd.close();
+			conn.disconnect();
 
 			ObjectMapper objectMapper = null;
 			String mappedValue = null;
@@ -71,12 +70,12 @@ public class ApiController {
 				for (int j = 0; j < row1.size(); j++) {
 					objectMapper = new ObjectMapper();
 					mappedValue = objectMapper.writeValueAsString(row1);
-					ra = objectMapper.readValue(mappedValue, RestaurantApi.class);
+					ra = objectMapper.readValue(mappedValue, Restaurant.class);
 					jsonNode = objectMapper.readTree(mappedValue);
 				}
-				Iterator<JsonNode> itr = jsonNode.iterator();
 
-				int crtfc_upso_mgt_sno = jsonNode.get("CRTFC_UPSO_MGT_SNO").asInt();
+
+/*				int crtfc_upso_mgt_sno = jsonNode.get("CRTFC_UPSO_MGT_SNO").asInt();
 				String upso_sno = jsonNode.get("UPSO_SNO").asText();
 				String upso_nm = jsonNode.get("UPSO_NM").asText();
 				String cgg_code = jsonNode.get("CGG_CODE").asText();
@@ -133,17 +132,15 @@ public class ApiController {
 				ra.setCrtfc_sno(crtfc_sno);
 				ra.setCrt_time(crt_time);
 				ra.setCrt_usr(crt_usr);
-				ra.setUpd_time(upd_time);
-
+				ra.setUpd_time(upd_time);*/
 			}
-
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return ra + "";
-        
+		return restaurantService.save(ra);
+
 	}
 
 }
