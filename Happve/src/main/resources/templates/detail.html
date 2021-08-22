@@ -7,7 +7,7 @@
     <meta name="og:type" content="website" />
     <meta name="twitter:card" content="photo" />
     <link rel="stylesheet" type="text/css" th:href="@{css/detail/css/detail.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{css/detail/css/styleguide.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{css/detail/css/styleguide.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{css/detail/css/globals.css}" />
     <meta name="author" content="AnimaApp.com - Design to code, Automated." />
   </head>
@@ -70,7 +70,11 @@
 
                 <div class="flex-row-3">
                   <!-- 식당이름 -->
-                  <p class="restitle">식당이름이름</p>
+                  <p class="restitle">
+                    <a href="item.html" th:text="${ra.upso_nm}"
+                       th:href="@{/api/basic2/{crtfc_upso_mgt_sno}(crtfc_upso_mgt_sno=${ra.crtfc_upso_mgt_sno})}">
+                      업소명</a>
+                  </p>
                   <!-- 별점 -->
                   <div class="rating">
                     <p class="ratingpoint">4.4</p>
@@ -122,27 +126,27 @@
             <div class="address">
               <div class="flex-row-5">
                 <div class="addresstitle applesdgothicneo-regular-normal-rhino-17px">주소</div>
-                <p class="addressold applesdgothicneo-regular-normal-rhino-17px">서울특별시 어디구 김수로 12-1</p>
+                <p class="addressold applesdgothicneo-regular-normal-rhino-17px" th:text="${ra.rdn_code_nm}">서울특별시 어디구 김수로 12-1</p>
               </div>
-              <p class="addressstreet applesdgothicneo-regular-normal-rhino-17px">서울시 어디구 리기동1가 21-54</p>
+              <p class="addressstreet applesdgothicneo-regular-normal-rhino-17px" th:text="${ra.rdn_detail_addr}">서울시 어디구 리기동1가 21-54</p>
             </div>
 
             <!-- 전화번호 -->
             <div class="phone">
-              <div class="title applesdgothicneo-regular-normal-rhino-17px">전화번호</div>
-              <p class="phonenum applesdgothicneo-regular-normal-rhino-17px">02-1234-1234</p>
+              <div class="title applesdgothicneo-regular-normal-rhino-17px" >전화번호</div>
+              <p class="phonenum applesdgothicneo-regular-normal-rhino-17px" th:text="${ra.tel_no}">02-1234-1234</p>
             </div>
 
             <!-- 음식종류 -->
             <div class="rescategory">
               <div class="title applesdgothicneo-regular-normal-rhino-17px">음식종류</div>
-              <p class="restext applesdgothicneo-regular-normal-rhino-17px">이탈리안</p>
+              <p class="restext applesdgothicneo-regular-normal-rhino-17px" th:text="${ra.bizcnd_code_nm}">이탈리안</p>
             </div>
 
             <!-- 메뉴 -->
             <div class="menu">
               <div class="menutitle applesdgothicneo-regular-normal-rhino-17px">메뉴</div>
-              <p class="menudata applesdgothicneo-regular-normal-rhino-17px">
+              <p class="menudata applesdgothicneo-regular-normal-rhino-17px" th:text="${ra.food_menu}">
                 리코타베지&amp;아보카도샌드위치(락토,비건) / 플렉스 스테이크(락토,비건)
               </p>
             </div>
