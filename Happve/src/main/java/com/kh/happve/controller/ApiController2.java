@@ -1,7 +1,6 @@
 package com.kh.happve.controller;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.happve.entity.Restaurant;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
-import java.io.DataInput;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -25,10 +23,15 @@ import java.util.*;
 @Controller
 public class ApiController2 {
 
-	@RequestMapping("/api/basic2")
-	public String basic(Model model) {
+	@RequestMapping("/api")
+	public String indexTest(){
+		return "clicktest";
+	}
+
+	@RequestMapping("/api/basic2/{crtfc_upso_mgt_sno}")
+	public String basic(@PathVariable("crtfc_upso_mgt_sno") Integer crtfc_upso_mgt_sno, Model model) {
 		StringBuffer result = new StringBuffer();
-		Restaurant ra = null;
+		Restaurant ra = new Restaurant();
 		JSONArray rowrow = null;
 		try {
 			StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088"); /*URL 각팀별로 가져오려는 공공데이터 엔드포인트 주소 , 샘플-무더위쉼터 엔드포인트*/
@@ -36,8 +39,8 @@ public class ApiController2 {
 			urlBuilder.append("/" + URLEncoder.encode("json", "UTF-8")); /*호출문서 형태*/
 			urlBuilder.append("/" + URLEncoder.encode("CrtfcUpsoInfo", "UTF-8")); /*서비스명*/
 			urlBuilder.append("/" + 1); //*한 페이지 결과 수*/
-			urlBuilder.append("/" + 5+"/"); /*페이지번호*/
-			//urlBuilder.append("/" + 9657 + "/"); /*페이지번호*/
+			urlBuilder.append("/" + 1 + "/"); /*페이지번호*/
+			urlBuilder.append("/" + crtfc_upso_mgt_sno + "/"); /*페이지번호*/
 
 			URL url = new URL(urlBuilder.toString());
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -60,16 +63,28 @@ public class ApiController2 {
 			JSONObject CrtfcUpsoInfo = (JSONObject) jsonObject.get("CrtfcUpsoInfo");
 			rowrow = (JSONArray) CrtfcUpsoInfo.get("row");
 
+			JSONObject arrayToJson = null;
+			ObjectMapper mapper = new ObjectMapper();
+
+			/* Restaurant getOne */
+
+			for(int i =0; i< rowrow.size(); i++) {
+				arrayToJson = (JSONObject) rowrow.get(i);
+				System.out.println("arrayToJson ===> " + arrayToJson);
+				ra = mapper.readValue(arrayToJson.toString(), Restaurant.class);
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		model.addAttribute("rowrow",rowrow);
+		model.addAttribute("ra",ra);
 
-		return "index";
+		return "detail";
 
 	}
 
+	/* Restaurant getList */
 	@GetMapping("/dispatcherView")
 	private List<Restaurant> dispatcherView(JSONArray jsonArray) {
 		List<Restaurant> list = new ArrayList<>();
@@ -94,8 +109,6 @@ public class ApiController2 {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-
 
 		return list;
 	}
