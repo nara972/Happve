@@ -24,21 +24,35 @@
           <form action="" method="post">
             <button type="" class="commu">평점 및 리뷰</button>
           </form>
-          <form action="" method="post">
-            <button type="" class="signup">회원가입</button>
-          </form>
+         <div id="_bd" sec:authorize="!isAuthenticated()">
+				<form action="/signup" method="get">
+					<button type="" class="signup">회원가입</button>
+				</form>
+				</div>
           <form action="" method="post">
             <button type="" class="con">건의하기</button>
           </form>
       
-          <form action="" method="post">
-            <button class="login">
-              <div class="overlap-group1">
-                <div class="loginbox"></div>
-                <div class="logintext">로그인</div>
-              </div>
-            </button>
-          </form>
+         <div id="_bd" sec:authorize="!isAuthenticated()">
+					<form th:action="@{/login}" method="get">
+						<button class="login">
+							<div class="overlap-group1">
+								<div class="loginbox"></div>
+								<div class="logintext">로그인</div>
+							</div>
+						</button>
+					</form>
+				</div>
+				<div id="_bd" sec:authorize="isAuthenticated()">
+					<form th:action="@{/logout}" method="post">
+						<button class="login">
+							<div class="overlap-group1">
+								<div class="loginbox"></div>
+								<div class="logintext">로그아웃</div>
+							</div>
+						</button>
+					</form>
+				</div>
         </header>
 
 

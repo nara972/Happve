@@ -50,44 +50,51 @@
         </div>
 
 
-        <div class="overlap-group">
-          <div class="backimg">
-            <div class="x197"></div>
-          </div>
+       <div class="overlap-group">
+				<div class="backimg">
+					<div class="x197"></div>
+				</div>
 
-          <div class="loginbox">
-            <div class="logintext-1">로그인</div>
-                        
-            <div class="idinput">
-              <div class="id">ID</div>
+				<div class="loginbox">
+					<div class="logintext-1">로그인</div>
 
-              <!-- id입력 -->
-              <form action="" method="post">
-                <input type="text" class="idinputext" value="ID를 입력하세요"></input>
-              
-                <img class="line9" src="css/login/img/line18@1x.png" />
-              </div>
+					<form th:action="@{/login}" method="post">
+						<!-- id입력 -->
+						<div class="idinput">
+							<div class="id">닉네임 또는 이메일</div>
 
-            <div class="passinput">
-              <div class="pass">비밀번호</div>
-              <!-- 비밀번호입력 -->
-                <input type="password" class="passinputext" value="비밀번호를 입력하세요"></input>
-              </form>
+							<input id="username" name="username" type="text"
+								class="idinputext" placeholder="이메일 또는 닉네임을 입력하세요"></input>
+							<!--  <small style="color: white" class="invalid-feedback">이메일 또는 닉네임을 입력하세요</small><br> -->
+							<img class="line9" src="css/login/img/line18@1x.png" />
+						</div>
 
-              <img class="line18" src="css/login/img/line18@1x.png" />
-            </div>
+						<!-- 비밀번호입력 -->
+						<div class="passinput">
+							<div class="pass">비밀번호</div>
+							<input id="password" name="password" type="password"
+								class="passinputext" placeholder="비밀번호를 입력하세요"></input> <img
+								class="line18" src="css/login/img/line18@1x.png" />
+						</div>
+						<div>
+							<br> <input id="rememberMe" type="checkbox"
+								name="remember-me" checked /> <label style="color: white"
+								for="rememberMe">로그인 유지</label>
+						</div>
+						<br><br>
+						<div th:if="${param.error}" role="alert">
+							<p style="color: white">이메일(또는 닉네임)과 패스워드가 정확하지 않습니다.</p>
+						</div>
+						<button class="loginbutton">
+							<div class="overlap-group2-1">
+								<div class="logingbuttonback"></div>
+								<div class="loginbuttontext">로그인 하기</div>
+							</div>
+						</button>
+					</form>
 
-            <form action="" method="post">
-              <button class="loginbutton">
-                <div class="overlap-group2-1">
-                  <div class="logingbuttonback"></div>
-                  <div class="loginbuttontext">로그인 하기</div>
-                </div>
-              </button>
-            </form>
-
-          </div>
-        </div>
+				</div>
+			</div>
 
         <footer class="footer">
           <div class="x239"></div>
