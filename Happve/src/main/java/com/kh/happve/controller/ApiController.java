@@ -1,5 +1,18 @@
 package com.kh.happve.controller;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kh.happve.entity.Restaurant;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,27 +22,13 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kh.happve.entity.Restaurant;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 @Controller
 @RequestMapping("/api")
 public class ApiController {
 	
 	@RequestMapping("/{crtfc_upso_mgt_sno}")
-	public String basic(@PathVariable("crtfc_upso_mgt_sno") Integer crtfc_upso_mgt_sno, Model model) {
+	public String basic(@PathVariable("crtfc_upso_mgt_sno") Integer crtfc_upso_mgt_sno,
+						Model model) {
 		StringBuffer result = new StringBuffer();
 		Restaurant ra = new Restaurant();
 		JSONArray rowrow = null;
