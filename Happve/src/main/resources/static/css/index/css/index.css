@@ -179,8 +179,8 @@
   border-radius: 100px;
   display: flex;
   height: 60px;
-  min-width: 434px;
-  left: 983px;
+  width: 400x;
+  left: 1050px;
   padding: 15px 29px;
   position: absolute;
   top: 446px;
@@ -779,9 +779,9 @@
   border-radius: 100px;
   display: flex;
   height: 60px;
-  margin-left: 126px;
+  margin-left: 10px;
   margin-top: 14.0px;
-  min-width: 434px;
+  width: 434px;
   padding: 15px 29px;
 
   color: lightgray;
@@ -793,6 +793,7 @@
   border: 0;
   outline: 0;
 }
+
 
 .index .searchbutton2 {
   align-items: flex-end;
