@@ -4,6 +4,11 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.happve.entity.Restaurant;
+
+import com.kh.happve.service.ReviewService;
+
+import lombok.RequiredArgsConstructor;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,15 +28,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/api")
 public class ApiController {
+	
+	private final ReviewService reviewService;
+
 	
 	@RequestMapping("/{crtfc_upso_mgt_sno}")
 	public String basic(@PathVariable("crtfc_upso_mgt_sno") Integer crtfc_upso_mgt_sno,
 						Model model) {
+
 		StringBuffer result = new StringBuffer();
 		Restaurant ra = new Restaurant();
 		JSONArray rowrow = null;
+
 		try {
 			StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088"); /*URL 각팀별로 가져오려는 공공데이터 엔드포인트 주소 , 샘플-무더위쉼터 엔드포인트*/
 			urlBuilder.append("/" + "6f4a424463716c773834794d516d44"); /*Service Key 공공데이터포털에서 받은 인증키*/
@@ -39,7 +50,8 @@ public class ApiController {
 			urlBuilder.append("/" + URLEncoder.encode("CrtfcUpsoInfo", "UTF-8")); /*서비스명*/
 			urlBuilder.append("/" + 1); //*한 페이지 결과 수*/
 			urlBuilder.append("/" + 5 ); /*페이지번호*/
-			urlBuilder.append("/" + crtfc_upso_mgt_sno + "/"); /*페이지번호*/
+			urlBuilder.append("/" + crtfc_upso_mgt_sno); /*페이지번호*/
+			urlBuilder.append("/" );
 
 			URL url = new URL(urlBuilder.toString());
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -72,12 +84,25 @@ public class ApiController {
 				System.out.println("arrayToJson ===> " + arrayToJson);
 				ra = mapper.readValue(arrayToJson.toString(), Restaurant.class);
 			}
+			//전체 리뷰 수
+			model.addAttribute("replycnt",reviewService.replyCnt());
+			
+			//식당에 대한 각 별점 평가 수
+			model.addAttribute("oneRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(0));
+			model.addAttribute("twoRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(1));
+			model.addAttribute("threeRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(2));
+			model.addAttribute("fourRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(3));
+			model.addAttribute("fiveRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(4));
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+		//식당 정보 getOne
 		model.addAttribute("ra",ra);
+		
+		//리뷰 리스트
+		model.addAttribute("reviewlist",reviewService.findByRestaurantId(crtfc_upso_mgt_sno));
 
 		return "detail";
 
