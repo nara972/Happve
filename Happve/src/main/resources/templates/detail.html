@@ -103,12 +103,19 @@
             </div>
 
             <!-- 리뷰쓰기버튼 -->
-            <form action="" method="post">
-              <button class="reviewwrite">
+            <div sec:authorize="isAuthenticated()">
+              <button class="reviewwrite" th:onclick="|location.href='@{|/api/${ra.crtfc_upso_mgt_sno}/review|}'|">
                 <img class="reviewwriteicon" src="detail/img/reviewwriteicon@1x.png" />
                 <div class="reviewwritetext applesdgothicneo-regular-normal-rhino-15px">리뷰쓰기</div>
               </button>
-            </form>
+            </div>
+            
+             <div sec:authorize="!isAuthenticated()">
+              <button class="reviewwrite" th:onclick="|location.href='@{/login}'|">
+                <img class="reviewwriteicon" src="detail/img/reviewwriteicon@1x.png" />
+                <div class="reviewwritetext applesdgothicneo-regular-normal-rhino-15px">리뷰쓰기</div>
+              </button>
+            </div>
             
             <!-- 북마크버튼 -->
             <form action="" method="post">
@@ -161,31 +168,31 @@
           </div>
         </div>
 
-        <!-- 리뷰헤드 -->
+       <!-- 리뷰헤드 -->
         <div class="reviewheader">
           <img class="line16" src="detail/img/infodataline@1x.png" />
           <div class="flex-row-6">
-            <div class="reviewtotal applesdgothicneo-regular-normal-rhino-20px">리뷰(21)</div>
+            <div class="reviewtotal applesdgothicneo-regular-normal-rhino-20px" th:text="${replycnt}"></div>
             <div class="total applesdgothicneo-regular-normal-rhino-20px">전체(21)</div>
             <img class="line" src="detail/img/line10@1x.png" />
-            <div class="x5star applesdgothicneo-regular-normal-rhino-20px">별5개(10)</div>
+            <div class="x5star applesdgothicneo-regular-normal-rhino-20px" th:text="${fiveRating}">별5개(5)</div>
             <img class="line" src="detail/img/line10@1x.png" />
-            <div class="x4star applesdgothicneo-regular-normal-rhino-20px">별4개(10)</div>
+            <div class="x4star applesdgothicneo-regular-normal-rhino-20px" th:text="${fourRating}">별4개(10)</div>
             <img class="line" src="detail/img/line10@1x.png" />
-            <div class="x3star applesdgothicneo-regular-normal-rhino-20px">별3개(1)</div>
+            <div class="x3star applesdgothicneo-regular-normal-rhino-20px" th:text="${threeRating}">별3개(1)</div>
             <img class="line" src="detail/img/line10@1x.png" />
-            <div class="x2star applesdgothicneo-regular-normal-rhino-20px">별2개(0)</div>
+            <div class="x2star applesdgothicneo-regular-normal-rhino-20px" th:text="${twoRating}">별2개(0)</div>
             <img class="line" src="detail/img/line10@1x.png" />
-            <div class="x1star applesdgothicneo-regular-normal-rhino-20px">별1개(0)</div>
+            <div class="x1star applesdgothicneo-regular-normal-rhino-20px" th:text="${oneRating}">별1개(0)</div>
           </div>
         </div>
 
         <!-- 리뷰1 -->
-        <div class="review1">
+        <div class="review1" th:each="review:${reviewlist}">
           <div class="flex-row">
             <div class="flex-col">
               <!-- 유저이름 -->
-              <p class="reviewuser applesdgothicneo-regular-normal-rhino-15px">호박고구마</p>
+              <p class="reviewuser applesdgothicneo-regular-normal-rhino-15px" th:text="${review.member.nickname}"></p>
               <!-- 유저가쓴 리뷰 수 -->
               <div class="reviewwritecount1">
                 <img class="reviewwritecounticon" src="detail/img/reviewwritecounticon1@1x.png" />
@@ -195,7 +202,7 @@
 
             <div class="flex-col-1">
               <!-- 날짜 -->
-              <p class="reviewdate applesdgothicneo-regular-normal-rhino-15px">2021-01–01</p>
+              <p class="reviewdate applesdgothicneo-regular-normal-rhino-15px" th:text="${review.regdate}"></p>
               <div class="overlap-group-1">
                 <!-- 이미지1 -->
                 <div class="simg1 border-1px-dove-gray"></div>
@@ -204,99 +211,14 @@
                 <!-- 이미지3 -->
                 <div class="simg3 border-1px-dove-gray"></div>
                 <!-- 리뷰내용 -->
-                <p class="reviewcontent applesdgothicneo-regular-normal-rhino-15px">
-                  맛있다맛있다맛있다 맛있다<br />맛있다맛있다맛있다맛있 맛있다맛있다맛있다맛있다맛있다 맛있다맛있다
-                  맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다
-                </p>
+                <textarea class="reviewcontent applesdgothicneo-regular-normal-rhino-15px" th:text="${review.content}">
+                  </textarea>
               </div>
             </div>
             <!-- 오른쪽 별 -->
             <div class="reviewrating">
               <div class="overlap-group-3">
-                <p class="reviewratingtext applesdgothicneo-regular-normal-blue-romance-20px">3개</p>
-                <img class="staricon" src="detail/img/staricon1@1x.png" />
-              </div>
-            </div>
-
-          </div>
-          <img class="line-1" src="detail/img/infodataline@1x.png" />
-        </div>
-
-        <!-- 리뷰2 -->
-        <div class="review2">
-          <div class="flex-row">
-            <div class="flex-col">
-              <!-- 유저이름 -->
-              <p class="reviewuser applesdgothicneo-regular-normal-rhino-15px">호박고구마</p>
-              <!-- 유저가쓴 리뷰 수 -->
-              <div class="reviewwritecount">
-                <img class="reviewwritecounticon" src="detail/img/reviewwritecounticon1@1x.png" />
-                <p class="reviewwritecountnum applesdgothicneo-regular-normal-rhino-12px">21</p>
-              </div>
-            </div>
-
-            <div class="flex-col-1">
-              <!-- 날짜 -->
-              <p class="reviewdate applesdgothicneo-regular-normal-rhino-15px">2021-01–01</p>
-              <div class="overlap-group-1">
-                <!-- 이미지1 -->
-                <div class="simg1 border-1px-dove-gray"></div>
-                <!-- 이미지2 -->
-                <div class="simg2 border-1px-dove-gray"></div>
-                <!-- 이미지3 -->
-                <div class="simg3 border-1px-dove-gray"></div>
-                <!-- 리뷰내용 -->
-                <p class="reviewcontent applesdgothicneo-regular-normal-rhino-15px">
-                  맛있다맛있다맛있다 맛있다<br />맛있다맛있다맛있다맛있 맛있다맛있다맛있다맛있다맛있다 맛있다맛있다
-                  맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다
-                </p>
-              </div>
-            </div>
-            <!-- 오른쪽 별 -->
-            <div class="reviewrating">
-              <div class="overlap-group-3">
-                <p class="reviewratingtext applesdgothicneo-regular-normal-blue-romance-20px">3개</p>
-                <img class="staricon" src="detail/img/staricon1@1x.png" />
-              </div>
-            </div>
-
-          </div>
-          <img class="line-1" src="detail/img/infodataline@1x.png" />
-        </div>
-
-        <!-- 리뷰3 -->
-        <div class="review3">
-          <div class="flex-row">
-            <div class="flex-col">
-              <!-- 유저이름 -->
-              <p class="reviewuser applesdgothicneo-regular-normal-rhino-15px">호박고구마</p>
-              <!-- 유저가쓴 리뷰 수 -->
-              <div class="reviewwritecount">
-                <img class="reviewwritecounticon" src="detail/img/reviewwritecounticon1@1x.png" />
-                <p class="reviewwritecountnum applesdgothicneo-regular-normal-rhino-12px">21</p>
-              </div>
-            </div>
-            <div class="flex-col-1">
-              <!-- 날짜 -->
-              <p class="reviewdate applesdgothicneo-regular-normal-rhino-15px">2021-01–01</p>
-              <div class="overlap-group-1">
-                <!-- 이미지1 -->
-                <div class="simg1 border-1px-dove-gray"></div>
-                <!-- 이미지2 -->
-                <div class="simg2 border-1px-dove-gray"></div>
-                <!-- 이미지3 -->
-                <div class="simg3 border-1px-dove-gray"></div>
-                <!-- 리뷰내용 -->
-                <p class="reviewcontent applesdgothicneo-regular-normal-rhino-15px">
-                  맛있다맛있다맛있다 맛있다<br />맛있다맛있다맛있다맛있 맛있다맛있다맛있다맛있다맛있다 맛있다맛있다
-                  맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다
-                </p>
-              </div>
-            </div>
-            <!-- 오른쪽별 -->
-            <div class="reviewrating">
-              <div class="overlap-group-3">
-                <p class="reviewratingtext applesdgothicneo-regular-normal-blue-romance-20px">3개</p>
+                <p class="reviewratingtext applesdgothicneo-regular-normal-blue-romance-20px" th:text="${review.rating}"></p>
                 <img class="staricon" src="detail/img/staricon1@1x.png" />
               </div>
             </div>

@@ -13,6 +13,9 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.happve.entity.Restaurant;
+import com.kh.happve.service.ReviewService;
+
+import lombok.RequiredArgsConstructor;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -25,11 +28,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/api")
 public class ApiController {
 	
+	private final ReviewService reviewService;
+	
 	@RequestMapping("/{crtfc_upso_mgt_sno}")
 	public String basic(@PathVariable("crtfc_upso_mgt_sno") Integer crtfc_upso_mgt_sno, Model model) {
+		
 		StringBuffer result = new StringBuffer();
 		Restaurant ra = new Restaurant();
 		JSONArray rowrow = null;
@@ -73,12 +80,24 @@ public class ApiController {
 				System.out.println("arrayToJson ===> " + arrayToJson);
 				ra = mapper.readValue(arrayToJson.toString(), Restaurant.class);
 			}
+			//전체 리뷰 수
+			model.addAttribute("replycnt",reviewService.replyCnt());
+			
+			//식당에 대한 각 별점 평가 수
+			model.addAttribute("oneRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(0));
+			model.addAttribute("twoRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(1));
+			model.addAttribute("threeRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(2));
+			model.addAttribute("fourRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(3));
+			model.addAttribute("fiveRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(4));
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		model.addAttribute("ra",ra);
+		
+		//리뷰 리스트
+		model.addAttribute("reviewlist",reviewService.findByRestaurantId(crtfc_upso_mgt_sno));
 
 		return "detail";
 
