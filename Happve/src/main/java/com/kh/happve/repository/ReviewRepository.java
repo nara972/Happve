@@ -20,5 +20,8 @@ public interface ReviewRepository extends JpaRepository<Review, Integer>{
 	
 	@Query(value="select count(r) from Review r where r.crtfcUpsoMgtSno=:crtfcUpsoMgtSno group by r.rating order by rating asc")
 	List<Integer> findByRatingAndCrtfcUpsoMgtSno(@Param("crtfcUpsoMgtSno") Integer crtfcUpsoMgtSno);
-	
+
+	@Query(value = "select r from Review r order by regdate desc")
+	List<Review> findReviewsOrderByRegDateDesc();
+
 }

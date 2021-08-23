@@ -5,9 +5,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.validation.Valid;
 
+import com.kh.happve.entity.Review;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -101,4 +103,10 @@ public class ReviewController {
 		return "redirect:/api/{crtfc_upso_mgt_sno}";
 	}
 
+	@GetMapping("/reviewList")  // 커뮤니티 (리뷰 리스트)
+	public String reviewList(Model model){
+		List<Review> reviewList = reviewService.findAllReviews();
+		model.addAttribute("reviewList",reviewList);
+		return "commu";
+	}
 }

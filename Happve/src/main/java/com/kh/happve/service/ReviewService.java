@@ -41,4 +41,9 @@ public class ReviewService {
 		return reviews;
 	}
 
+	public List<Review> findAllReviews(){
+		List<Review> findAllReviews = reviewRepository.findReviewsOrderByRegDateDesc();
+		return findAllReviews;
+	}
+
 }
