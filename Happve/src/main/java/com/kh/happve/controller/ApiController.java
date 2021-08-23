@@ -25,14 +25,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
+@RequestMapping("/api")
 public class ApiController {
-
-	@RequestMapping("/api")
-	public String indexTest(){
-		return "clicktest";
-	}
-
-	@RequestMapping("/api/basic2/{crtfc_upso_mgt_sno}")
+	
+	@RequestMapping("/{crtfc_upso_mgt_sno}")
 	public String basic(@PathVariable("crtfc_upso_mgt_sno") Integer crtfc_upso_mgt_sno, Model model) {
 		StringBuffer result = new StringBuffer();
 		Restaurant ra = new Restaurant();
