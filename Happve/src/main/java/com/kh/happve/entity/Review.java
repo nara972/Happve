@@ -32,7 +32,7 @@ public class Review {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "review_id")
-	private Integer reviewId;
+	private Long reviewId;
 
 	@Column(name = "crtfc_upso_mgt_sno")
 	private Integer crtfcUpsoMgtSno;
