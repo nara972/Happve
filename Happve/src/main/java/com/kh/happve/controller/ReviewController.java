@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.happve.dto.ReviewForm;
@@ -98,8 +99,8 @@ public class ReviewController {
 	@PostMapping("/{crtfc_upso_mgt_sno}/review")
 	public String reviewWrite(@PathVariable Integer crtfc_upso_mgt_sno, 
 			                  @Valid @ModelAttribute ReviewForm reviewForm,
-			                  @CurrentAccount Member member, Model model) throws Exception {
-		reviewService.saveReview(reviewForm, member, crtfc_upso_mgt_sno);
+			                  @CurrentAccount Member member,MultipartFile[] files) throws Exception {
+		reviewService.saveReview(reviewForm, member, crtfc_upso_mgt_sno,files);
 		return "redirect:/api/{crtfc_upso_mgt_sno}";
 	}
 

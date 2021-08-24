@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.happve.dto.ReviewForm;
 import com.kh.happve.entity.Member;
 import com.kh.happve.entity.Review;
+import com.kh.happve.repository.ImageRepository;
 import com.kh.happve.repository.ReviewRepository;
+import com.kh.happve.util.FileUtils;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,14 +21,17 @@ import lombok.RequiredArgsConstructor;
 public class ReviewService {
 
 	private final ReviewRepository reviewRepository;
+	private final ImageRepository imageRepository;
+    private final FileUtils fileUtils;
 
-	public void saveReview(ReviewForm reviewForm, Member member, Integer crtfcUpsoMgtSno) throws Exception {
+	public void saveReview(ReviewForm reviewForm, Member member, Integer crtfcUpsoMgtSno,MultipartFile[] files) throws Exception {
 		Review review = Review.builder()
 				              .content(reviewForm.getContent())
 				              .rating(reviewForm.getRating()).member(member)
 				              .crtfcUpsoMgtSno(crtfcUpsoMgtSno).build();
 
 		reviewRepository.save(review);
+		imageRepository.saveAll(fileUtils.uploadFiles(files, review.getReviewId(),review.getCrtfcUpsoMgtSno()));
 	}
 
 	public int replyCnt() {
