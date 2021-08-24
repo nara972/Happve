@@ -222,16 +222,15 @@
 
             <div class="flex-col-1">
               <!-- 날짜 -->
-              <p class="reviewdate applesdgothicneo-regular-normal-rhino-15px" th:text="${review.regdate}"></p>
+              <p class="reviewdate applesdgothicneo-regular-normal-rhino-15px" th:text="${#temporals.format(review.regdate,'yyyy-MM-dd')}"></p>
               <div class="overlap-group-1">
-                <!-- 이미지1 -->
-                <div class="simg1 border-1px-dove-gray"></div>
-                <!-- 이미지2 -->
-                <div class="simg2 border-1px-dove-gray"></div>
-                <!-- 이미지3 -->
-                <div class="simg3 border-1px-dove-gray"></div>
+                  <!-- 리뷰 이미지 리스트 -->
+                <br><br><br><br>
+                <span th:if="${review.reviewId==image.reviewId}" th:each="image:${imagelist}">
+                 <img th:src="'/getFiles/'+${image.saveName}"   width="200" height="200">
+                </span>
                 <!-- 리뷰내용 -->
-                <textarea class="reviewcontent applesdgothicneo-regular-normal-rhino-15px" th:text="${review.content}">
+                <textarea style="border:none" class="reviewcontent applesdgothicneo-regular-normal-rhino-15px" th:text="${review.content}">
                   </textarea>
               </div>
             </div>
