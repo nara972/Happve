@@ -42,6 +42,8 @@
   font-weight: 700;
   src: url("../fonts/AppleSDGothicNeo-Bold.ttf") format("truetype");
 }
+
+
 .screen a {
   display: contents;
   text-decoration: none;
@@ -62,4 +64,5 @@
 
 * {
   box-sizing: border-box;
+  text-decoration: none;
 }

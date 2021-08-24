@@ -1,4 +1,7 @@
 /* screen - detail */
+a {
+  text-decoration: none;
+}
 
 .detail {
   align-items: center;
@@ -50,7 +53,7 @@
   min-height: 23px;
   min-width: 88px;
   white-space: nowrap;
-  
+
   color: var(--rhino);
   font-family: var(--font-family-applesd_gothic_neo-light);
   font-size: var(--font-size-xl);
@@ -705,6 +708,9 @@
   white-space: nowrap;
 }
 
+menu p {
+  width: 60%;
+}
 .detail .overlap-group-4 {
   align-items: flex-start;
   background-color: var(--rhino);
@@ -919,7 +925,7 @@
   height: 279px;
   margin-top: 20px;
   position: relative;
-  width: 700px;
+  width: 507px;
 }
 
 .detail .simg1 {

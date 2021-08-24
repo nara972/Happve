@@ -1,4 +1,7 @@
 /* screen - detail */
+a {
+  text-decoration: none;
+}
 
 .detail {
   align-items: center;
@@ -704,6 +707,7 @@
   min-width: 473px;
   white-space: nowrap;
 }
+
 
 .detail .overlap-group-4 {
   align-items: flex-start;

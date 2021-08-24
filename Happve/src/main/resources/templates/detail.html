@@ -10,8 +10,9 @@
     <link rel="stylesheet" type="text/css" href="css/detail/css/styleguide.css" th:href="@{/css/detail/css/styleguide.css}"/>
     <link rel="stylesheet" type="text/css" href="css/detail/css/globals.css" th:href="@{/css/detail/css/globals.css}" />
     <meta name="author" content="AnimaApp.com - Design to code, Automated." />
+
   </head>
-  <body style="margin: 0; background: #ffffff">
+  <body style="margin: 0; background: #ffffff; ">
     <input type="hidden" id="anPageName" name="page" value="detail" />
     <div class="container-center-horizontal">
       <div class="detail screen">
@@ -73,7 +74,7 @@
                   <p class="restitle">
                     <a href="item.html" th:text="${ra.upso_nm}"
                        th:href="@{/api/basic2/{crtfc_upso_mgt_sno}(crtfc_upso_mgt_sno=${ra.crtfc_upso_mgt_sno})}">
-                      업소명</a>
+                      업소명입니다.</a>
                   </p>
                   <!-- 별점 -->
                   <div class="rating">
@@ -166,19 +167,16 @@
           <div class="mapapi">
             <div id="map" style="width:100%;height:350px;"></div>
             <div id="contents">
-              <form method="post" th:action="@{/map}">
-
-                <input type="hidden" id="xId" name="xId" th:value="${ra.x_cnts}">
-                <input type="hidden" id="yId" name="yId" th:value="${ra.y_dnts}">
+              <form method="get" th:action="@{/map}">
 
                 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2ac1fa2c91bdde93952b37975c3ea8ac"></script>
-                <script>
-                  var xId = $("#xId").value();
-                  var yId = $("#yId").value();
+                <script th:inline="javascript">
+                  var xId = [[${ra.x_cnts}]]
+                  var yId = [[${ra.y_dnts}]]
 
                   var mapContainer = document.getElementById('map'), // 지도를 표시할 div
                           mapOption = {
-                            center: new kakao.maps.LatLng(xId, yId), // 지도의 중심좌표
+                            center: new kakao.maps.LatLng(yId, xId), // 지도의 중심좌표
                             level: 3 // 지도의 확대 레벨
                           };
                   var map = new kakao.maps.Map(mapContainer, mapOption);

@@ -99,6 +99,11 @@ public class ApiController {
 			e.printStackTrace();
 		}
 
+		/*int x = Integer.parseInt(ra.getX_cnts());
+		int y = Integer.parseInt(ra.getY_dnts());
+		ra.setX_cnts(x);
+		*/
+
 		//식당 정보 getOne
 		model.addAttribute("ra",ra);
 		
