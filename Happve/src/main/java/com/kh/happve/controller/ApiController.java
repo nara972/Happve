@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.happve.entity.Restaurant;
-
+import com.kh.happve.service.ImageService;
 import com.kh.happve.service.ReviewService;
 
 import lombok.RequiredArgsConstructor;
@@ -33,6 +33,7 @@ import java.util.List;
 public class ApiController {
 	
 	private final ReviewService reviewService;
+	private final ImageService imageService;
 
 	
 	@RequestMapping("/{crtfc_upso_mgt_sno}")
@@ -103,6 +104,9 @@ public class ApiController {
 		
 		//리뷰 리스트
 		model.addAttribute("reviewlist",reviewService.findByRestaurantId(crtfc_upso_mgt_sno));
+		
+		//이미지 리스트
+		model.addAttribute("imagelist",imageService.findRestaurantId(crtfc_upso_mgt_sno));
 
 		return "detail";
 
