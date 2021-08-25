@@ -52,7 +52,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(WebSecurity web) throws Exception{
 		web.ignoring()
+<<<<<<< Updated upstream
 		   .antMatchers("/favicon.ico","/static/css**", "/resources/**", "/error")
+=======
+		   .antMatchers("/favicon.ico","/static/css/**", "/resources/**", "/error","/getFiles/**")
+>>>>>>> Stashed changes
 		   .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
 	}
 }
