@@ -17,6 +17,9 @@
   justify-content: flex-end;
   min-width: 1920px;
   padding: 20px 232px;
+  
+  z-index: 1;
+  position: fixed;
 }
 
 
@@ -95,6 +98,7 @@
   display: flex;
   margin-left: 75px;
   min-width: 162px;
+  
   border: 0;
   outline: 0;
   background-color:transparent;
@@ -134,11 +138,12 @@
 .index .overlap-group-1 {
   align-items: center;
   background-color: var(--rhino);
-  border: 1px solid #707070;
   display: flex;
   flex-direction: column;
-  min-height: 1561px;
+  height: 1561px;
   width: 1920px;
+  
+  margin-top: 127px;
 }
 
 .index .overlap-group1-1 {
@@ -694,6 +699,8 @@
   margin-bottom: 0;
   position: relative;
   width: 1539px;
+  
+  
 }
 
 .index .so5back {
