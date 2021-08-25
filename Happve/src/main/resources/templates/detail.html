@@ -85,19 +85,19 @@
               <div class="flex-row-4">
                 <!-- 읽은 카운트 -->
                 <div class="viewcount">
-                  <img class="viewicon" src="detail/img/viewicon@1x.png" />
+                  <img class="viewicon" src="css/detail/img/viewicon@1x.png" />
                   <p class="viewcountnum applesdgothicneo-regular-normal-rhino-15px">3,232</p>
                 </div>
 
                 <!-- 리뷰쓴 카운트 -->
                 <div class="writecount">
-                  <img class="writecounticon" src="detail/img/writecounticon@1x.png" />
+                  <img class="writecounticon" src="css/detail/img/writecounticon@1x.png" />
                   <p class="writecountnum applesdgothicneo-regular-normal-rhino-15px">21</p>
                 </div>
 
                 <!-- 북마크카운트 -->
                 <div class="bookmarkcount">
-                  <img class="bookmarkcounticon" src="detail/img/bookmarkcounticon@1x.png" />
+                  <img class="bookmarkcounticon" src="css/detail/img/bookmarkcounticon@1x.png" />
                   <p class="bookmarkcountnum applesdgothicneo-regular-normal-rhino-15px">142</p>
                 </div>
               </div>
@@ -106,14 +106,14 @@
             <!-- 리뷰쓰기버튼 -->
             <div sec:authorize="isAuthenticated()">
               <button class="reviewwrite" th:onclick="|location.href='@{|/api/${ra.crtfc_upso_mgt_sno}/review|}'|">
-                <img class="reviewwriteicon" src="detail/img/reviewwriteicon@1x.png" />
+                <img class="reviewwriteicon" src="css/detail/img/reviewwriteicon@1x.png" />
                 <div class="reviewwritetext applesdgothicneo-regular-normal-rhino-15px">리뷰쓰기</div>
               </button>
             </div>
             
              <div sec:authorize="!isAuthenticated()">
               <button class="reviewwrite" th:onclick="|location.href='@{/login}'|">
-                <img class="reviewwriteicon" src="detail/img/reviewwriteicon@1x.png" />
+                <img class="reviewwriteicon" src="css/detail/img/reviewwriteicon@1x.png" />
                 <div class="reviewwritetext applesdgothicneo-regular-normal-rhino-15px">리뷰쓰기</div>
               </button>
             </div>
@@ -121,14 +121,14 @@
             <!-- 북마크버튼 -->
             <form action="" method="post">
               <button class="bookmark">
-                <img class="bookmarkicon" src="detail/img/bookmarkicon@1x.png" />
+                <img class="bookmarkicon" src="css/detail/img/bookmarkicon@1x.png" />
                 <div class="bookmarktext applesdgothicneo-regular-normal-rhino-15px">즐겨찾기</div>
               </button>
             </form>
           </div>
 
           <div class="flex-col-3">
-            <img class="infodataline" src="detail/img/infodataline@1x.png" />
+            <img class="infodataline" src="css/detail/img/infodataline@1x.png" />
 
             <!-- 주소 -->
             <div class="address">
@@ -188,19 +188,19 @@
 
        <!-- 리뷰헤드 -->
         <div class="reviewheader">
-          <img class="line16" src="detail/img/infodataline@1x.png" />
+          <img class="line16" src="css/detail/img/infodataline@1x.png" />
           <div class="flex-row-6">
             <div class="reviewtotal applesdgothicneo-regular-normal-rhino-20px" th:text="${replycnt}"></div>
             <div class="total applesdgothicneo-regular-normal-rhino-20px">전체(21)</div>
-            <img class="line" src="detail/img/line10@1x.png" />
+            <img class="line" src="css/detail/img/line10@1x.png" />
             <div class="x5star applesdgothicneo-regular-normal-rhino-20px" th:text="${fiveRating}">별5개(5)</div>
-            <img class="line" src="detail/img/line10@1x.png" />
+            <img class="line" src="css/detail/img/line10@1x.png" />
             <div class="x4star applesdgothicneo-regular-normal-rhino-20px" th:text="${fourRating}">별4개(10)</div>
-            <img class="line" src="detail/img/line10@1x.png" />
+            <img class="line" src="css/detail/img/line10@1x.png" />
             <div class="x3star applesdgothicneo-regular-normal-rhino-20px" th:text="${threeRating}">별3개(1)</div>
-            <img class="line" src="detail/img/line10@1x.png" />
+            <img class="line" src="css/detail/img/line10@1x.png" />
             <div class="x2star applesdgothicneo-regular-normal-rhino-20px" th:text="${twoRating}">별2개(0)</div>
-            <img class="line" src="detail/img/line10@1x.png" />
+            <img class="line" src="css/detail/img/line10@1x.png" />
             <div class="x1star applesdgothicneo-regular-normal-rhino-20px" th:text="${oneRating}">별1개(0)</div>
           </div>
         </div>
@@ -213,7 +213,7 @@
               <p class="reviewuser applesdgothicneo-regular-normal-rhino-15px" th:text="${review.member.nickname}"></p>
               <!-- 유저가쓴 리뷰 수 -->
               <div class="reviewwritecount1">
-                <img class="reviewwritecounticon" src="detail/img/reviewwritecounticon1@1x.png" />
+                <img class="reviewwritecounticon" src="css/detail/img/reviewwritecounticon1@1x.png" />
                 <p class="reviewwritecountnum applesdgothicneo-regular-normal-rhino-12px">21</p>
               </div>
             </div>
@@ -236,19 +236,19 @@
             <div class="reviewrating">
               <div class="overlap-group-3">
                 <p class="reviewratingtext applesdgothicneo-regular-normal-blue-romance-20px" th:text="${review.rating}"></p>
-                <img class="staricon" src="detail/img/staricon1@1x.png" />
+                <img class="staricon" src="css/detail/img/staricon1@1x.png" />
               </div>
             </div>
 
           </div>
-          <img class="line-1" src="detail/img/infodataline@1x.png" />
+          <img class="line-1" src="css/detail/img/infodataline@1x.png" />
         </div>
 
         <!-- 더보기 -->
         <form action="" method="post">
           <button class="morebutton">
             <div class="text-3 applesdgothicneo-regular-normal-blue-romance-20px">더보기</div>
-            <img class="icon-ionic-ios-arrow-down" src="detail/img/icon-ionic-ios-arrow-down@1x.png" />
+            <img class="icon-ionic-ios-arrow-down" src="css/detail/img/icon-ionic-ios-arrow-down@1x.png" />
           </button>
         </form>
         
