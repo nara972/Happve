@@ -31,17 +31,17 @@ public class MemberController {
 	@GetMapping("/signup")
 	public String SignUpForm(Model model) {
 		model.addAttribute(new SignUpForm());
-		return "account/sign-up";
+		return "signup";
 	}
 	
 	@PostMapping("/signup")
 	public String SignUp(@Valid SignUpForm signUpForm,Errors errors) {
 		if(errors.hasErrors()) {
-			return "account/sign-up";
+			return "signup";
 		}
 		signUpFormValidator.validate(signUpForm,errors);
 		if(errors.hasErrors()) {
-			return "account/sign-up";
+			return "signup";
 		}
 		
 		Member member=memberService.saveNewMember(signUpForm);
