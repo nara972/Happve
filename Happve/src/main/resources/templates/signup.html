@@ -68,34 +68,34 @@
               <div class="id">닉네임</div>
               <input type="text" class="idinputbox" id="nickname" th:field="*{nickname}" placeholder="닉네임을 입력해주세요"><br>
               <small style="color:white" th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">Nickname Error</small>
-              <img class="line9" src="signup/img/line9@1x.png" />
+              <img class="line9" src="css/signup/img/line9@1x.png" />
             </div>
             <div class="input">
               <div class="pass">비밀번호</div>
               <!-- 비밀번호 입력 -->
               <input id="password" type="password" th:field="*{password}" class="passinputbox"><br>
                <small style="color:white" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</small>
-              <img class="line18" src="signup/img/file--18@1x.png" />
+              <img class="line18" src="css/signup/img/file--18@1x.png" />
             </div>
             <div class="passinputconfirm">
               <div class="passconfirm">비밀번호 확인</div>
               <!-- 비밀번호 확인 -->
               <input id="passwordConfirm" type="password" th:field="*{passwordConfirm}" class="passconfrimbox"></input><br>
                <small style="color:white" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}">Password Error</small>
-              <img class="line18-1" src="signup/img/file--18@1x.png" />
+              <img class="line18-1" src="css/signup/img/file--18@1x.png" />
             </div>
             <div class="input">
               <div class="email">Email 주소</div>
               <!-- 이메일 입력 -->
               <input id="email" type="email" th:field="*{email}" class="emailinputbox" placeholder="이메일 주소를 입력하세요"></input><br>
               <small style="color:white" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</small>
-              <img class="line18-2" src="signup/img/file--18@1x.png" />
+              <img class="line18-2" src="css/signup/img/file--18@1x.png" />
             </div>
             <div class="input">
               <div class="vege">채식주의자 유형</div>
               <!-- 채식주의자 입력 -->
               <input id="vtype" type="text" th:field="*{vtype}" class="vegeinputbox" placeholder="ex) 비건, 락토, 페스코 .."></input>
-              <img class="x18" src="signup/img/file--18@1x.png" />
+              <img class="x18" src="css/signup/img/file--18@1x.png" />
             </div>
             <div class="text-3">회원가입을 통해 리뷰를 작성할 수 있습니다.<br />더 많은 채식 식당을 공유해 보세요!</div>
             <!-- 회원가입 버튼 -->
