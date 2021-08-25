@@ -52,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(WebSecurity web) throws Exception{
 		web.ignoring()
-		   .antMatchers("/favicon.ico","/static/css**", "/resources/**", "/error","/getFiles/**")
+		   .antMatchers("/favicon.ico","/static/css/**", "/resources/**", "/error","/getFiles/**")
 		   .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
 	}
 }
