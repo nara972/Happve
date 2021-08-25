@@ -17,7 +17,8 @@
     <div class="container-center-horizontal">
       <div class="index screen">
 
-        <header class="header">     <헤더> 평점 및 리뷰 / 회원가입 / 건의하기 / 로그인
+		<!-- <헤더> 평점 및 리뷰 / 회원가입 / 건의하기 / 로그인 -->
+        <!-- <header class="header">     
           <form action="" method="post">
             <button type="" class="title">Happve</button>
           </form>
@@ -53,9 +54,32 @@
 						</button>
 					</form>
 				</div>
-        </header>
+        </header> -->
+        
+	<!-- 공통헤더 수정중 -->
+	<div data-include-path="header-unknown.html"></div>
 
+    <script>
 
+        window.addEventListener('load', function() {
+            var allElements = document.getElementsByTagName('*');
+            Array.prototype.forEach.call(allElements, function(el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                }
+            });
+        });
+
+    </script>
+ 
         <div class="overlap-group-1">
           <div class="overlap-group1-1">
             <div class="searchback"></div>
