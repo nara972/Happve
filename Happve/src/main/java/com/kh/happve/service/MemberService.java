@@ -60,5 +60,19 @@ public class MemberService implements UserDetailsService{
 		UserMember userMember=new UserMember(member);
 		return userMember;  
 	}
+	
+	//프로필 변경
+	public void updateProfile(Member member,String email,String nickname,String vtype) {
+		member.setEmail(email);
+		member.setNickname(nickname);
+		member.setVtype(vtype);
+		memberRepository.save(member);
+	}
+	
+	//비밀번호 변경
+	public void updatePassword(Member member, String newPassword) {
+		member.setPassword(passwordEncoder.encode(newPassword));
+		memberRepository.save(member);
+	}
 
 }

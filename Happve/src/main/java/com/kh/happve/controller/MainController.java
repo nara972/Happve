@@ -22,5 +22,12 @@ public class MainController {
 	public String login() {
 		return "login";
 	}
+	
+	@GetMapping("/mypage")
+	public String mypage(@CurrentAccount Member member,Model model) {
+		model.addAttribute(member);
+		return "mypage";
+	}
+	
 
 }
