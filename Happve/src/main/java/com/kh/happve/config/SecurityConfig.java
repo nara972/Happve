@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		jdbcTokenRepository.setDataSource(dataSource);
 		return jdbcTokenRepository;
 	}
-	
+	//test
 	@Override
 	public void configure(WebSecurity web) throws Exception{
 		web.ignoring()
