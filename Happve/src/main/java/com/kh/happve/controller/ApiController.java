@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.happve.entity.Image;
-import com.kh.happve.entity.Restaurant;
+import com.kh.happve.entity.RestaurantApi;
 import com.kh.happve.entity.Review;
 import com.kh.happve.service.ImageService;
 import com.kh.happve.service.ReviewService;
@@ -43,7 +43,7 @@ public class ApiController {
 						Model model) {
 
 		StringBuffer result = new StringBuffer();
-		Restaurant ra = new Restaurant();
+		RestaurantApi ra = new RestaurantApi();
 		JSONArray rowrow = null;
 
 		try {
@@ -85,7 +85,7 @@ public class ApiController {
 			for(int i =0; i< rowrow.size(); i++) {
 				arrayToJson = (JSONObject) rowrow.get(i);
 				System.out.println("arrayToJson ===> " + arrayToJson);
-				ra = mapper.readValue(arrayToJson.toString(), Restaurant.class);
+				ra = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
 			}
 			//전체 리뷰 수
 			model.addAttribute("replycnt",reviewService.replyCnt());
@@ -128,18 +128,18 @@ public class ApiController {
 
 	/* Restaurant getList */
 	@GetMapping("/restaurants")
-	private List<Restaurant> restaurants(JSONArray jsonArray) {
-		List<Restaurant> list = new ArrayList<>();
-		Restaurant restaurant = null;
+	private List<RestaurantApi> restaurants(JSONArray jsonArray) {
+		List<RestaurantApi> list = new ArrayList<>();
+		RestaurantApi restaurantApi = null;
 		JSONObject arrayToJson = null;
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			for(int i =0; i< jsonArray.size(); i++){
 				arrayToJson = (JSONObject) jsonArray.get(i);
 				System.out.println("arrayToJson ===> " + arrayToJson);
-				restaurant = mapper.readValue(arrayToJson.toString(), Restaurant.class);
-				list.add(restaurant);
-				System.out.println("===== getCrtfc_upso_mgt_sno() ===> " + restaurant.getCrtfc_upso_mgt_sno());
+				restaurantApi = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
+				list.add(restaurantApi);
+				System.out.println("===== getCrtfc_upso_mgt_sno() ===> " + restaurantApi.getCrtfc_upso_mgt_sno());
 			}
 
 			System.out.println("list data ===> " + list);
