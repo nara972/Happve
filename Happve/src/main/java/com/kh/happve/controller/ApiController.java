@@ -3,7 +3,9 @@ package com.kh.happve.controller;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kh.happve.entity.Image;
 import com.kh.happve.entity.Restaurant;
+import com.kh.happve.entity.Review;
 import com.kh.happve.service.ImageService;
 import com.kh.happve.service.ReviewService;
 
@@ -99,19 +101,26 @@ public class ApiController {
 			e.printStackTrace();
 		}
 
-		/*int x = Integer.parseInt(ra.getX_cnts());
-		int y = Integer.parseInt(ra.getY_dnts());
-		ra.setX_cnts(x);
-		*/
+		List<Review> reviewlist = reviewService.findByRestaurantId(crtfc_upso_mgt_sno);
+		List<Image> imagelist = imageService.findRestaurantId(crtfc_upso_mgt_sno);
 
 		//식당 정보 getOne
 		model.addAttribute("ra",ra);
-		
+
 		//리뷰 리스트
-		model.addAttribute("reviewlist",reviewService.findByRestaurantId(crtfc_upso_mgt_sno));
-		
+		model.addAttribute("reviewlist",reviewlist);
+
 		//이미지 리스트
-		model.addAttribute("imagelist",imageService.findRestaurantId(crtfc_upso_mgt_sno));
+		model.addAttribute("imagelist",imagelist);
+
+
+		if(imagelist != null){
+			model.addAttribute("imageTop1", imagelist.get(0).getSaveName());
+			model.addAttribute("imageTop2",imagelist.get(1).getSaveName());
+			model.addAttribute("imageTop3",imagelist.get(2).getSaveName());
+			model.addAttribute("imageTop4",imagelist.get(3).getSaveName());
+			model.addAttribute("imageTop5",imagelist.get(4).getSaveName());
+		}
 
 		return "detail";
 
