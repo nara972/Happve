@@ -19,35 +19,64 @@
         <div class="overlap-group1">
 
           <!-- <헤더> 평점 및 리뷰 / 회원가입 / 건의하기 / 로그인-->
-          <header class="header">
-            <form action="" method="post">
-              <button type="" class="title-1">Happve</button>
-            </form>
-            <form action="" method="post">
-              <button type="" class="commu">평점 및 리뷰</button>
-            </form>
-            <form action="" method="post">
-              <button type="" class="signup">회원가입</button>
-            </form>
-            <form action="" method="post">
-              <button type="" class="con">건의하기</button>
-            </form>
-          
-            <form action="" method="post">
-              <button type="" class="login">
-                <div class="overlap-group2">
-                  <div class="loginbox"></div>
-                  <div class="logintext">로그인</div>
+          <header class="header-unknown">
+            <div class="overlap-group">
+              <div class="header-buttons">
+    
+                <!-- 메인으로 -->
+                <form action="" method="get">
+                  <button class="header-title">Happve</button>
+                </form>
+                
+                <!-- 커뮤니티로 -->
+                <form action="" method="get">
+                  <button class="header-commu">평점 및 리뷰</button>
+                </form>
+                
+                <!-- 회원가입으로 -->
+                <form action="" method="get">
+                  <button class="header-signup">회원가입</button>
+                </form>
+                
+                <!-- 건의하기로 -->
+                <form action="" method="get">
+                  <button class="header-con">건의하기</button>
+                </form>
+                
+                <!-- 로그인 -->
+                <form action="" method="get">
+                  <button class="header-login">
+                    <div class="header-logintext">로그인</div>
+                  </button>
+                </form>
+                
+              </div>
+              
+              <!-- 헤더검색 -->
+              <form action="" method="post">
+                <div class="header-search">
+      
+                  <!-- 검색 드롭다운 -->
+                  <select class="header-searchdropdown">
+                    <option value="area">지역</option>
+                    <option value="restaurant">식당</option>
+                    <option value="food">음식</option>
+                  </select>
+      
+                  <!-- 검색 인풋 -->
+                  <input type="text" class="header-searchinput" value="지역,식당 또는 음식 선택 후 검색">
+      
+                  <!-- 검색 버튼 -->
+                  <button class="header-searchbutton">
+                    <div class="header-searchbuttontext">Search</div>
+                  </button>
+                  
                 </div>
-              </button>
-            </form>
+              </form>
+    
+            </div>
           </header>
           
-          <!-- 검색 -->
-          <form action="" method="post">
-            <button type="" class="searchbutton"><div class="searchtext">Search</div></button>
-            <input type="text" class="searchtextbox" value="지역,식당 또는 음식"></input>
-          </form>
         </div>
 
         <!-- 이미지 -->
@@ -73,7 +102,7 @@
                   <!-- 식당이름 -->
                   <p class="restitle">
                     <a href="item.html" th:text="${ra.upso_nm}"
-                       th:href="@{/api/basic2/{crtfc_upso_mgt_sno}(crtfc_upso_mgt_sno=${ra.crtfc_upso_mgt_sno})}">
+                      th:href="@{/api/basic2/{crtfc_upso_mgt_sno}(crtfc_upso_mgt_sno=${ra.crtfc_upso_mgt_sno})}">
                       업소명입니다.</a>
                   </p>
                   <!-- 별점 -->
@@ -111,7 +140,7 @@
               </button>
             </div>
             
-             <div sec:authorize="!isAuthenticated()">
+            <div sec:authorize="!isAuthenticated()">
               <button class="reviewwrite" th:onclick="|location.href='@{/login}'|">
                 <img class="reviewwriteicon" src="css/detail/img/reviewwriteicon@1x.png" />
                 <div class="reviewwritetext applesdgothicneo-regular-normal-rhino-15px">리뷰쓰기</div>
@@ -186,7 +215,7 @@
           </div>
         </div>
 
-       <!-- 리뷰헤드 -->
+        <!-- 리뷰헤드 -->
         <div class="reviewheader">
           <img class="line16" src="css/detail/img/infodataline@1x.png" />
           <div class="flex-row-6">
@@ -225,7 +254,7 @@
                   <!-- 리뷰 이미지 리스트 -->
                 <br><br><br><br>
                 <span th:if="${review.reviewId==image.reviewId}" th:each="image:${imagelist}">
-                 <img th:src="'/getFiles/'+${image.saveName}"   width="200" height="200">
+                <img th:src="'/getFiles/'+${image.saveName}"   width="200" height="200">
                 </span>
                 <!-- 리뷰내용 -->
                 <textarea style="border:none" class="reviewcontent applesdgothicneo-regular-normal-rhino-15px" th:text="${review.content}">

@@ -15,22 +15,74 @@
     <input type="hidden" id="anPageName" name="page" value="mypage" />
     <div class="container-center-horizontal">
       <div class="mypage screen">
-        <div class="header">
-          <div class="overlap-group3">
-            <div class="headerbox">
-              <div class="title">Happve</div>
-              <div class="commu applesdgothicneo-light-rhino-18px">평점 및 리뷰</div>
-              <div class="mypage-1 applesdgothicneo-light-rhino-18px">마이페이지</div>
-              <div class="con applesdgothicneo-light-rhino-18px">건의하기</div>
-              <div class="x3"><img class="icon-awesome-user-circle" src="css/mypage/img/icon-awesome-user-circle-1@1x.png" /></div>
+
+
+        <header class="header-unknown">
+          <div class="overlap-group">
+            <div class="header-buttons">
+  
+              <!-- 메인으로 -->
+              <form action="" method="get">
+                <button class="header-title">Happve</button>
+              </form>
+              
+              <!-- 커뮤니티로 -->
+              <form action="" method="get">
+                <button class="header-commu">평점 및 리뷰</button>
+              </form>
+              
+              <!-- 회원가입으로 -->
+              <form action="" method="get">
+                <button class="header-signup">회원가입</button>
+              </form>
+              
+              <!-- 건의하기로 -->
+              <form action="" method="get">
+                <button class="header-con">건의하기</button>
+              </form>
+              
+              <form action="" method="get">
+                <button class="headermypage">
+                  <img class="icon-awesome-user-circle" src="css/headerunknown/img/icon-awesome-user-circle-1@1x.png" />
+                </button>
+              </form>
+  
+              <!-- 로그인 -->
+              <form action="" method="get">
+                <button class="header-login">
+                  <div class="header-logintext">로그아웃</div>
+                </button>
+              </form>
+              
             </div>
-            <div class="searchbox">
-              <div class="searchdropdown"><img class="searchtextboxtext" src="css/mypage/img/searchtextboxtext-1@1x.png" /></div>
-              <div class="searchinput"><img class="searchtextboxtext-1" src="css/mypage/img/searchtextboxtext-2@1x.png" /></div>
-              <div class="searchbutton"><div class="search">Search</div></div>
-            </div>
+            
+            <!-- 헤더검색 -->
+            <form action="" method="post">
+              <div class="header-search">
+    
+                <!-- 검색 드롭다운 -->
+                <select class="header-searchdropdown">
+                  <option value="area">지역</option>
+                  <option value="restaurant">식당</option>
+                  <option value="food">음식</option>
+                </select>
+    
+                <!-- 검색 인풋 -->
+                <input type="text" class="header-searchinput" value="지역,식당 또는 음식 선택 후 검색">
+    
+                <!-- 검색 버튼 -->
+                <button class="header-searchbutton">
+                  <div class="header-searchbuttontext">Search</div>
+                </button>
+                
+              </div>
+            </form>
+  
           </div>
-        </div>
+        </header>
+
+
+
         <div class="overlap-group">
           <div class="back">
             <div class="x245"></div>
@@ -40,8 +92,6 @@
               <h1 class="title-1">#stop<br />Eating<br />meat</h1>
             </div>
           </div>
-
-          
 
           <a href="mypagebookmark.html">
             <div class="bookmarkbutton"><div class="bookmarktext">내 즐겨찾기</div></div></a>
