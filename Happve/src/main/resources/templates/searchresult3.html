@@ -26,7 +26,7 @@
             <div class="login">
               <div class="overlap-group1">
                 <div class="loginback"></div>
-                <div class="logintext" action="/signup" >로그인</div>
+                <div class="logintext">로그인</div>
               </div>
             </div>
           </header>
@@ -44,6 +44,21 @@
         </div>
 
 
+<!--
+
+        <form th:action="@{/index/search}" method="get">
+          <select class="searchselect1" name="type" >
+
+            <option value="title">식당</option>
+            <option value="menu">음식</option>
+          </select>
+
+          <input type="text" class="searchtextbox1" value="식당 또는 음식 검색" name="keyword"></input>
+          <button type="submit" class="searchbutton1"><div class="search">Search</div></button>
+        </form>
+-->
+
+
 
         <div class="keywordresult">
           <!-- 검색 키워드 출력 -->
@@ -59,7 +74,7 @@
 
 
         <!--<div th:each="result2 : %{resultByMenu}">-->
-        <div th:each="result : ${titleResult}" >
+        <div th:each="result : ${resultByAllSearch}" >
 
         <div class="resultbox-1">
           <div class="flex-row">
@@ -132,7 +147,7 @@
 
 
 
-    <!--    <div class="resultbox">
+        <div class="resultbox">
           <div class="flex-row">
             <div class="flex-col">
               <div class="resulttitle applesdgothicneo-regular-normal-rhino-30px">식당이름이름</div>
@@ -178,7 +193,7 @@
             <img class="infodataline" src="css/searchresult/img/infodataline-1@1x.png" />
           </div>
         </div>
--->
+
         <!-- <div class="resultbox">
           <div class="flex-row">
             <div class="flex-col">

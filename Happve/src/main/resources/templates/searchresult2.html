@@ -26,12 +26,10 @@
             <div class="login">
               <div class="overlap-group1">
                 <div class="loginback"></div>
-                <div class="logintext" action="/signup" >로그인</div>
+                <div class="logintext" action="/signup">로그인</div>
               </div>
             </div>
           </header>
-
-
 
 
           <!-- 상단검색 -->
@@ -41,10 +39,10 @@
             <input type="text" class="searchtextbox" value="지역,식당 또는 음식" name="keyword"><img class="texttext" src="css/searchresult/img/texttext@1x.png" />
           </form>
 
+
+
+
         </div>
-
-
-
         <div class="keywordresult">
           <!-- 검색 키워드 출력 -->
           <div class="keybacktext">키워드</div>
@@ -52,14 +50,7 @@
           <div class="keybacktext-1">의 검색 결과 입니다.</div>
         </div>
 
-
-
-
-
-
-
-        <!--<div th:each="result2 : %{resultByMenu}">-->
-        <div th:each="result : ${titleResult}" >
+        <div th:each="result : ${resultByMenu}" >
 
         <div class="resultbox-1">
           <div class="flex-row">
@@ -124,15 +115,10 @@
         </div>
 
 
-
-
         </div>
-        <!--</div>-->
 
 
-
-
-    <!--    <div class="resultbox">
+        <div class="resultbox">
           <div class="flex-row">
             <div class="flex-col">
               <div class="resulttitle applesdgothicneo-regular-normal-rhino-30px">식당이름이름</div>
@@ -178,7 +164,7 @@
             <img class="infodataline" src="css/searchresult/img/infodataline-1@1x.png" />
           </div>
         </div>
--->
+
         <!-- <div class="resultbox">
           <div class="flex-row">
             <div class="flex-col">
