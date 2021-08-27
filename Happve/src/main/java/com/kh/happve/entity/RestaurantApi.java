@@ -21,7 +21,7 @@ import javax.validation.constraints.NotBlank;
 @Component
 /*@JsonNaming(value = (PropertyNamingStrategies.SNAKE_CASE))*/
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class Restaurant {
+public class RestaurantApi {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
