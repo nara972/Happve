@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.happve.entity.Image;
-import com.kh.happve.entity.Restaurant;
+import com.kh.happve.entity.RestaurantApi;
 import com.kh.happve.entity.Review;
 import com.kh.happve.service.ImageService;
 import com.kh.happve.service.ReviewService;
@@ -46,7 +46,7 @@ public class ApiController {
 						Model model) {
 
 		StringBuffer result = new StringBuffer();
-		Restaurant ra = new Restaurant();
+		RestaurantApi ra = new RestaurantApi();
 		JSONArray rowrow = null;
 
 		try {
@@ -89,7 +89,7 @@ public class ApiController {
 				arrayToJson = (JSONObject) rowrow.get(i);
 
 				System.out.println("arrayToJson ===> " + arrayToJson);
-				ra = mapper.readValue(arrayToJson.toString(), Restaurant.class);
+				ra = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
 
 				log.info("arrayToJson ={}", arrayToJson);
 				ra = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
@@ -146,11 +146,6 @@ public class ApiController {
 
 	/* Restaurant getList */
 	@GetMapping("/restaurants")
-
-	private List<Restaurant> restaurants(JSONArray jsonArray) {
-		List<Restaurant> list = new ArrayList<>();
-		Restaurant restaurant = null;
-
 	private List<RestaurantApi> restaurants(JSONArray jsonArray) {
 		List<RestaurantApi> list = new ArrayList<>();
 		RestaurantApi restaurant = null;
@@ -162,7 +157,7 @@ public class ApiController {
 				arrayToJson = (JSONObject) jsonArray.get(i);
 				System.out.println("arrayToJson ===> " + arrayToJson);
 
-				restaurant = mapper.readValue(arrayToJson.toString(), Restaurant.class);
+				restaurant = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
 
 				restaurant = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
 
