@@ -1,3 +1,4 @@
+
 /* screen - header-unknown */
 
 .header-unknown {
@@ -13,6 +14,8 @@
   height: 128px;
   position: relative;
   min-width: 1920px;
+
+  margin-top: 0px;
 }
 
 .header-unknown .header-buttons {
@@ -111,7 +114,7 @@
   display: flex;
   height: 48px;
   justify-content: flex-end;
-  margin-left: 75px;
+  margin-left: 35px;
   min-width: 160px;
   padding: 10.5px 55px;
 
@@ -234,7 +237,7 @@
   display: flex;
   height: 48px;
   justify-content: flex-end;
-  margin-left: 131px;
+  margin-left: 55px;
   min-width: 48px;
   padding: 6.1px;
 }

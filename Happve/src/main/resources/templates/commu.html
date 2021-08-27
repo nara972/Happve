@@ -18,36 +18,66 @@
         <div class="overlap-group-1">
 
           <!-- <헤더> 평점 및 리뷰 / 회원가입 / 건의하기 / 로그인-->
-          <header class="header">
-            <form action="" method="post">
-              <button class="title">Happve</button>
-            </form>
-            <form action="" method="post">
-              <button class="commu-1">평점 및 리뷰</button>
-            </form>
-            <form action="" method="post">
-              <button class="signup">회원가입</button>
-            </form>
-            <form action="" method="post"></form>
-              <button class="con">건의하기</button>
-            </form>
-            <form action="" method="post">
-              <button class="login">
-                <div class="overlap-group2-1">
-                  <div class="loginback"></div>
-                  <div class="logintext">로그인</div>
+          <header class="header-unknown">
+            <div class="overlap-group">
+              <div class="header-buttons">
+    
+                <!-- 메인으로 -->
+                <form action="" method="get">
+                  <button class="header-title">Happve</button>
+                </form>
+                
+                <!-- 커뮤니티로 -->
+                <form action="" method="get">
+                  <button class="header-commu">평점 및 리뷰</button>
+                </form>
+                
+                <!-- 회원가입으로 -->
+                <form action="" method="get">
+                  <button class="header-signup">회원가입</button>
+                </form>
+                
+                <!-- 건의하기로 -->
+                <form action="" method="get">
+                  <button class="header-con">건의하기</button>
+                </form>
+                
+                <!-- 로그인 -->
+                <form action="" method="get">
+                  <button class="header-login">
+                    <div class="header-logintext">로그인</div>
+                  </button>
+                </form>
+                
+              </div>
+              
+              <!-- 헤더검색 -->
+              <form action="" method="post">
+                <div class="header-search">
+      
+                  <!-- 검색 드롭다운 -->
+                  <select class="header-searchdropdown">
+                    <option value="area">지역</option>
+                    <option value="restaurant">식당</option>
+                    <option value="food">음식</option>
+                  </select>
+      
+                  <!-- 검색 인풋 -->
+                  <input type="text" class="header-searchinput" value="지역,식당 또는 음식 선택 후 검색">
+      
+                  <!-- 검색 버튼 -->
+                  <button class="header-searchbutton">
+                    <div class="header-searchbuttontext">Search</div>
+                  </button>
+                  
                 </div>
-              </button>
-            </form>
+              </form>
+    
+            </div>
           </header>
 
-          <!-- 헤더 지도 검색 -->
-          <form action="" method="post">
-            <button type="" class="searchbutton"><div class="search">Search</div></button>
-            <input type="text" class="searchtextbox" value="지역,식당 또는 음식"></input>
-          </form>
-
         </div>
+        
         <!-- 리뷰검색 -->
         <div class="overlap-group1">
           <div class="keyback"><div class="keybacktext">방문객들의 리뷰를 검색해보세요!</div></div>

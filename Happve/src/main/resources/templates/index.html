@@ -11,86 +11,57 @@
     <link rel="stylesheet" type="text/css" href="css/index/css/globals.css" th:href="@{/css/index/css/globals.css}"/>
     <meta name="author" content="AnimaApp.com - Design to code, Automated." />
     
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous">
-    </script>
-  <script>
-    $(function () {
-      $("#header").load("header-unknown.html");
-      $("#footer").load("footer.html");
-    });
-  </script>
-  
-  </head>
-  <body style="margin: 0; background: #ffffff">
-    <input type="hidden" id="anPageName" name="page" value="index" />
-    <div class="container-center-horizontal">
-      <div class="index screen">
-
-      <div id="header"></div>
-
-		<!-- <헤더> 평점 및 리뷰 / 회원가입 / 건의하기 / 로그인 -->
-        <!-- <header class="header">     
-          <form action="" method="post">
-            <button type="" class="title">Happve</button>
-          </form>
-          <form action="" method="post">
-            <button type="" class="commu">평점 및 리뷰</button>
-          </form>
-         <div id="_bd" sec:authorize="!isAuthenticated()">
-				<form action="/signup" method="get">
-					<button type="" class="signup">회원가입</button>
-				</form>
-				</div>
-          <form action="" method="post">
-            <button type="" class="con">건의하기</button>
-          </form>
+</head>
+<body style="margin: 0; background: #ffffff">
+  <input type="hidden" id="anPageName" name="page" value="index" />
+  <div class="container-center-horizontal">
+    <div class="index screen">
       
-         <div id="_bd" sec:authorize="!isAuthenticated()">
-					<form th:action="@{/login}" method="get">
-						<button class="login">
-							<div class="overlap-group1">
-								<div class="loginbox"></div>
-								<div class="logintext">로그인</div>
-							</div>
-						</button>
-					</form>
-				</div>
-				<div id="_bd" sec:authorize="isAuthenticated()">
-					<form th:action="@{/logout}" method="post">
-						<button class="login">
-							<div class="overlap-group1">
-								<div class="loginbox"></div>
-								<div class="logintext">로그아웃</div>
-							</div>
-						</button>
-					</form>
-				</div>
-        </header> -->
-        
-	<!-- 공통헤더 수정중 -->
-	
-	<!-- <div data-include-path="header-unknown.html"></div>
+      <!-- <헤더> 평점 및 리뷰 / 회원가입 / 건의하기 / 로그인 -->
+        <header class="header-unknown">
+          <div class="overlap-group">
+            <div class="header-buttons">
+  
+              <!-- 메인으로 -->
+              <form action="" method="get">
+                <button class="header-title">Happve</button>
+              </form>
+              
+              <!-- 커뮤니티로 -->
+              <form action="" method="get">
+                <button class="header-commu">평점 및 리뷰</button>
+              </form>
+              
+              <!-- 회원가입으로 -->
+              <form action="" method="get">
+                <button class="header-signup">회원가입</button>
+              </form>
+              
+              <!-- 건의하기로 -->
+              <form action="" method="get">
+                <button class="header-con">건의하기</button>
+              </form>
+              
+              <!-- 로그인 -->
+              <form action="" method="get">
+                <button class="header-login">
+                  <div class="header-logintext">로그인</div>
+                </button>
+              </form>
+              
+            </div>
+            
+            <!-- 헤더검색 -->
+            <form action="" method="post">
+              <div class="header-search">
+                        
+              </div>
+            </form>
+  
+          </div>
+        </header>
 
-    <script>
-        window.addEventListener('load', function() {
-            var allElements = document.getElementsByTagName('*');
-            Array.prototype.forEach.call(allElements, function(el) {
-                var includePath = el.dataset.includePath;
-                if (includePath) {
-                    var xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function () {
-                        if (this.readyState == 4 && this.status == 200) {
-                            el.outerHTML = this.responseText;
-                        }
-                    };
-                    xhttp.open('GET', includePath, true);
-                    xhttp.send();
-                }
-            });
-        });
-    </script> -->
- 
+
         <div class="overlap-group-1">
           <div class="overlap-group1-1">
             <div class="searchback"></div>
