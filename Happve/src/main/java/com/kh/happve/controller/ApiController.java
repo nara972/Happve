@@ -87,13 +87,13 @@ public class ApiController {
 
 			for(int i =0; i< rowrow.size(); i++) {
 				arrayToJson = (JSONObject) rowrow.get(i);
-<<<<<<< HEAD
+
 				System.out.println("arrayToJson ===> " + arrayToJson);
 				ra = mapper.readValue(arrayToJson.toString(), Restaurant.class);
-=======
+
 				log.info("arrayToJson ={}", arrayToJson);
 				ra = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
->>>>>>> main
+
 			}
 
 			//전체 리뷰 수
@@ -146,26 +146,26 @@ public class ApiController {
 
 	/* Restaurant getList */
 	@GetMapping("/restaurants")
-<<<<<<< HEAD
+
 	private List<Restaurant> restaurants(JSONArray jsonArray) {
 		List<Restaurant> list = new ArrayList<>();
 		Restaurant restaurant = null;
-=======
+
 	private List<RestaurantApi> restaurants(JSONArray jsonArray) {
 		List<RestaurantApi> list = new ArrayList<>();
 		RestaurantApi restaurant = null;
->>>>>>> main
+
 		JSONObject arrayToJson = null;
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			for(int i =0; i< jsonArray.size(); i++){
 				arrayToJson = (JSONObject) jsonArray.get(i);
 				System.out.println("arrayToJson ===> " + arrayToJson);
-<<<<<<< HEAD
+
 				restaurant = mapper.readValue(arrayToJson.toString(), Restaurant.class);
-=======
+
 				restaurant = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
->>>>>>> main
+
 				list.add(restaurant);
 				System.out.println("===== getCrtfc_upso_mgt_sno() ===> " + restaurant.getCrtfc_upso_mgt_sno());
 			}
