@@ -81,16 +81,8 @@
 
         <!-- 이미지 -->
         <!-- 첫번째 이미지 -->
-        <div class="flex-row-1">
-          <img class="img1 border-1px-dove-gray" th:src="'/getFiles/'+ ${imageTop1}"></img>
-          <!-- 두번째 이미지 -->
-          <img class="img2 border-1px-dove-gray"  th:src="'/getFiles/'+${imageTop2}"></img>
-          <!-- 세번째이미지 -->
-          <img class="img3 border-1px-dove-gray"  th:src="'/getFiles/'+${imageTop3}"></img>
-          <!-- 네번째 이미지 -->
-          <img class="img4 border-1px-dove-gray" th:src="'/getFiles/'+${imageTop4}"></img>
-          <!-- 다섯번째 이미지 -->
-          <img class="img5 border-1px-dove-gray" th:src="'/getFiles/'+${imageTop5}"></img>
+        <div class="flex-row-1" >
+          <img class="img1 border-1px-dove-gray" th:each="i : ${imageToView}" th:src="'/getFiles/'+${i}" />
         </div>
 
         <!-- 식당정보 -->
@@ -222,15 +214,15 @@
             <div class="reviewtotal applesdgothicneo-regular-normal-rhino-20px" th:text="${replycnt}"></div>
             <div class="total applesdgothicneo-regular-normal-rhino-20px">전체(21)</div>
             <img class="line" src="css/detail/img/line10@1x.png" />
-            <div class="x5star applesdgothicneo-regular-normal-rhino-20px" th:text="${fiveRating}">별5개(5)</div>
+            <div class="x5star applesdgothicneo-regular-normal-rhino-20px" th:text="${5}" >별5개(5)</div>
             <img class="line" src="css/detail/img/line10@1x.png" />
-            <div class="x4star applesdgothicneo-regular-normal-rhino-20px" th:text="${fourRating}">별4개(10)</div>
+            <div class="x4star applesdgothicneo-regular-normal-rhino-20px" th:text="${4}" >별4개(10)</div>
             <img class="line" src="css/detail/img/line10@1x.png" />
-            <div class="x3star applesdgothicneo-regular-normal-rhino-20px" th:text="${threeRating}">별3개(1)</div>
+            <div class="x3star applesdgothicneo-regular-normal-rhino-20px" th:text="${3}" >별3개(1)</div>
             <img class="line" src="css/detail/img/line10@1x.png" />
-            <div class="x2star applesdgothicneo-regular-normal-rhino-20px" th:text="${twoRating}">별2개(0)</div>
+            <div class="x2star applesdgothicneo-regular-normal-rhino-20px" th:text="${2}"  >별2개(0)</div>
             <img class="line" src="css/detail/img/line10@1x.png" />
-            <div class="x1star applesdgothicneo-regular-normal-rhino-20px" th:text="${oneRating}">별1개(0)</div>
+            <div class="x1star applesdgothicneo-regular-normal-rhino-20px" th:text="${1}" >별1개(0)</div>
           </div>
         </div>
 
