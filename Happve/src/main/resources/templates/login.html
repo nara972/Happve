@@ -76,7 +76,13 @@
             </div>
           </header>
 
+          <!-- 검색 -->
+            <form th:action="@{/index/upSearch}" method="GET">
+            <button type="submit" class="seachbutton"><div class="searchbuttontext">Search</div></button>
+            <input type="text" class="searchtextbox" value="식당 또는 음식" name="keyword" ><img class="textext" src="css/login/img/textext@1x.png" /></input>
+          </form>
         </div>
+
 
 
        <div class="overlap-group">
