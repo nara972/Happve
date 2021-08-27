@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.kh.happve.entity.RestaurantApi;
 import com.kh.happve.entity.Review;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -26,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.happve.dto.ReviewForm;
 import com.kh.happve.entity.Member;
+import com.kh.happve.entity.Restaurant;
 import com.kh.happve.service.ReviewService;
 import com.kh.happve.validator.CurrentAccount;
 
@@ -42,7 +42,7 @@ public class ReviewController {
 	public String review(@PathVariable Integer crtfc_upso_mgt_sno, Model model, @CurrentAccount Member member) {
 		
 		StringBuffer result = new StringBuffer();
-		RestaurantApi ra = new RestaurantApi();
+		Restaurant ra = new Restaurant();
 		JSONArray rowrow = null;
 		try {
 			StringBuilder urlBuilder = new StringBuilder(
@@ -83,7 +83,7 @@ public class ReviewController {
 			for (int i = 0; i < rowrow.size(); i++) {
 				arrayToJson = (JSONObject) rowrow.get(i);
 				System.out.println("arrayToJson ===> " + arrayToJson);
-				ra = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
+				ra = mapper.readValue(arrayToJson.toString(), Restaurant.class);
 			}
 
 		} catch (Exception e) {

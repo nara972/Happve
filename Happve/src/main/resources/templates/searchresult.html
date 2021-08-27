@@ -49,16 +49,6 @@
                   </button>
                 </form>
                 
-
-          <header class="header">
-            <h1 class="title">Happve</h1>
-            <div class="commu applesdgothicneo-medium-rhino-18px">평점 및 리뷰</div>
-            <div class="header-item applesdgothicneo-medium-rhino-18px">회원가입</div>
-            <div class="header-item applesdgothicneo-medium-rhino-18px">건의하기</div>
-            <div class="login">
-              <div class="overlap-group1">
-                <div class="loginback"></div>
-                <div class="logintext" action="/signup" >로그인</div>
               </div>
               
               <!-- 헤더검색 -->
@@ -88,20 +78,6 @@
 
         </div>
 
-
-
-
-          <!-- 상단검색 -->
-          <form th:action="@{/index/upSearch}" method="GET">
-
-            <button type="submit" class="searchbutton"><div class="search">Search</div></button>
-            <input type="text" class="searchtextbox" value="식당 또는 음식" name="keyword"><img class="texttext" src="css/searchresult/img/texttext@1x.png" />
-          </form>
-
-        </div>
-
-
-
         <div class="keywordresult">
           <!-- 검색 키워드 출력 -->
           <div class="keybacktext">키워드</div>
@@ -109,21 +85,12 @@
           <div class="keybacktext-1">의 검색 결과 입니다.</div>
         </div>
 
-
-
-
-
-
-
-        <!--<div th:each="result2 : %{resultByMenu}">-->
-        <div th:each="result : ${titleResult}" >
-
         <div class="resultbox-1">
           <div class="flex-row">
             <div class="flex-col">
 
               <!-- 식당이름 -->
-              <p class="resulttitle applesdgothicneo-regular-normal-rhino-30px" th:text="${result.title}"></p>
+              <p class="resulttitle applesdgothicneo-regular-normal-rhino-30px">식당이름이름</p>
               <div class="flex-row-1">
                 <div class="viewcount">
                   <img class="viewicon" src="css/searchresult/img/viewicon-1@1x.png" />
@@ -156,22 +123,22 @@
               <div class="addresstitle applesdgothicneo-regular-normal-rhino-17px">주소</div>
               <div class="flex-col-2">
                 <!-- 번지주소 -->
-                <p class="addressold applesdgothicneo-regular-normal-rhino-17px" th:text="${result.roadAddress}"></p>
+                <p class="addressold applesdgothicneo-regular-normal-rhino-17px">서울특별시 어디구 김수로 12-1</p>
                 <!-- 새주소 -->
-                <p class="addressstreet applesdgothicneo-regular-normal-rhino-17px" th:text="${result.address}"></p>
+                <p class="addressstreet applesdgothicneo-regular-normal-rhino-17px">서울시 어디구 리기동1가 21-54</p>
               </div>
             </div>
             <div class="menu">
               <div class="menutitle applesdgothicneo-regular-normal-rhino-17px">메뉴</div>
               <!-- 대표메뉴 -->
-              <p class="menudata applesdgothicneo-regular-normal-rhino-17px" th:text="${result.menu}"></p>
+              <p class="menudata applesdgothicneo-regular-normal-rhino-17px">리코타베지&amp;아보카도샌드위치(락토,비건) / 플렉스 스테이크(락토,비건)</p>
             </div>
 
             <div class="morebox">
               <!-- 검색된 식당 이름 출력 -->
-              <p class="moreresname applesdgothicneo-regular-normal-star-dust-20px" th:text="${result.title}"></p>
+              <p class="moreresname applesdgothicneo-regular-normal-star-dust-20px">식당이름이름</p>
               <!-- 상세페이지로 이동 버튼 -->
-              <form th:action="@{/detail}" method="post">
+              <form action="" method="post">
                 <button class="morebutton applesdgothicneo-regular-normal-star-dust-20px">더보기&gt;</button>
               </form>
             </div>
@@ -180,16 +147,7 @@
           </div>
         </div>
 
-
-
-
-        </div>
-        <!--</div>-->
-
-
-
-
-    <!--    <div class="resultbox">
+        <div class="resultbox">
           <div class="flex-row">
             <div class="flex-col">
               <div class="resulttitle applesdgothicneo-regular-normal-rhino-30px">식당이름이름</div>
@@ -235,7 +193,7 @@
             <img class="infodataline" src="css/searchresult/img/infodataline-1@1x.png" />
           </div>
         </div>
--->
+
         <!-- <div class="resultbox">
           <div class="flex-row">
             <div class="flex-col">
