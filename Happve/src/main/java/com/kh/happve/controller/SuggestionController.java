@@ -30,7 +30,6 @@ public class SuggestionController {
         Long savedSuggestionId = suggestionService.save(suggestionForm);
         if(savedSuggestionId > 0) {
             redirectAttributes.addAttribute("status",true);
-            System.out.println(savedSuggestionId);
         }
         return "redirect:/suggest";
     }

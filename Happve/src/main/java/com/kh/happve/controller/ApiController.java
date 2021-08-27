@@ -11,6 +11,7 @@ import com.kh.happve.service.ReviewService;
 
 import lombok.RequiredArgsConstructor;
 
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -28,7 +29,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/api")
@@ -84,18 +87,24 @@ public class ApiController {
 
 			for(int i =0; i< rowrow.size(); i++) {
 				arrayToJson = (JSONObject) rowrow.get(i);
-				System.out.println("arrayToJson ===> " + arrayToJson);
+				log.info("arrayToJson ={}", arrayToJson);
 				ra = mapper.readValue(arrayToJson.toString(), Restaurant.class);
 			}
+
 			//전체 리뷰 수
 			model.addAttribute("replycnt",reviewService.replyCnt());
-			
-			//식당에 대한 각 별점 평가 수
-			model.addAttribute("oneRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(0));
-			model.addAttribute("twoRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(1));
-			model.addAttribute("threeRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(2));
-			model.addAttribute("fourRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(3));
-			model.addAttribute("fiveRating",reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno).get(4));
+
+			List<Integer> rating = new ArrayList<>();
+			List<Integer> integers = reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno);
+			for(int i=0; i<integers.size(); i++){
+				Stream<Integer> ratingStream = integers.stream();
+				ratingStream.filter(s-> s != null).forEach(s-> rating.add(s));
+
+				//식당에 대한 각 별점 평가 수
+				model.addAttribute(String.valueOf(i), rating.get(i));
+			}
+
+
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,23 +113,27 @@ public class ApiController {
 		List<Review> reviewlist = reviewService.findByRestaurantId(crtfc_upso_mgt_sno);
 		List<Image> imagelist = imageService.findRestaurantId(crtfc_upso_mgt_sno);
 
+		List<String> imageToView = new ArrayList<>();
+
+		if(imagelist != null){
+			Stream<Image> imageStream = imagelist.stream();
+			imageStream.limit(5).map(c-> c.getSaveName()).forEach(s-> imageToView.add(s));
+
+			// 대문 이미지 리스트
+			model.addAttribute("imageToView", imageToView);
+			log.info("imageToView ={}", imageToView);
+		}
+
+
 		//식당 정보 getOne
 		model.addAttribute("ra",ra);
 
 		//리뷰 리스트
 		model.addAttribute("reviewlist",reviewlist);
 
-		//이미지 리스트
+		//리뷰 이미지 리스트
 		model.addAttribute("imagelist",imagelist);
 
-
-		if(imagelist != null){
-			model.addAttribute("imageTop1", imagelist.get(0).getSaveName());
-			model.addAttribute("imageTop2",imagelist.get(1).getSaveName());
-			model.addAttribute("imageTop3",imagelist.get(2).getSaveName());
-			model.addAttribute("imageTop4",imagelist.get(3).getSaveName());
-			model.addAttribute("imageTop5",imagelist.get(4).getSaveName());
-		}
 
 		return "detail";
 
