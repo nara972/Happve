@@ -17,6 +17,8 @@
   --font-family-applesd_gothic_neo-extrabold: "AppleSD Gothic Neo-ExtraBold", Helvetica;
   --font-family-applesd_gothic_neo-medium: "AppleSD Gothic Neo-Medium", Helvetica;
   --font-family-applesd_gothic_neo-regular: "AppleSD Gothic Neo-Regular", Helvetica;
+  --font-family-applesd_gothic_neo-light: "AppleSD Gothic Neo-Light", Helvetica;
+
   --font-family-floodstd: "FloodStd", Helvetica;
   --font-family-floodstd-regular: "FloodStd-Regular", Helvetica;
   --font-family-komet-light: "Komet-Light", Helvetica;
@@ -66,6 +68,14 @@
   color: var(--rhino-2);
   font-family: var(--font-family-komet-light);
   font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 300;
+}
+
+.applesdgothicneo-light-rhino-18px {
+  color: var(--rhino);
+  font-family: var(--font-family-applesd_gothic_neo-light);
+  font-size: var(--font-size-m);
   font-style: normal;
   font-weight: 300;
 }
