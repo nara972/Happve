@@ -111,11 +111,14 @@
             </div>
 
             <div class="morebox">
+
               <!-- 검색된 식당 이름 출력 -->
               <p class="moreresname applesdgothicneo-regular-normal-star-dust-20px" th:text="${result.title}"></p>
+
+
               <!-- 상세페이지로 이동 버튼 -->
-              <form th:href="@{/api/{{result.restaurant_id}}}" method="get">
-                <button class="morebutton applesdgothicneo-regular-normal-star-dust-20px">더보기&gt;</button>
+              <form th:action="@{/api/${result.restaurant_id}}" method="get">
+                <button class="morebutton applesdgothicneo-regular-normal-star-dust-20px" type="submit">더보기&gt;</button>
               </form>
             </div>
 
@@ -123,7 +126,8 @@
           </div>
         </div>
 
-
+          <!--{crtfc_upso_mgt_sno}
+          ${result.restaurant_id}-->
 
 
         </div>
