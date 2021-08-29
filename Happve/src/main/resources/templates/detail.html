@@ -270,9 +270,13 @@
             </div>
           </div>
           
-          <form action="" method="post">
-            <button class="reviewDelete" type="submit">리뷰삭제</button>
-          </form>
+           <div sec:authorize="isAuthenticated()">
+           <span th:if="${review.member.nickname}==${member.nickname}">
+           <button type="submit" class="reviewDelete" th:onclick="|location.href='@{|/api/${review.crtfcUpsoMgtSno}/reviewdelete/${review.reviewId}|}'|">
+            리뷰삭제
+            </button>
+            </span>
+            </div>
         </div>
         
         <img class="line-1" src="css/detail/img/infodataline@1x.png" />

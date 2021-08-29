@@ -110,4 +110,10 @@ public class ReviewController {
 		model.addAttribute("reviewList",reviewList);
 		return "commu";
 	}
+	
+	@GetMapping("/{crtfc_upso_mgt_sno}/reviewdelete/{reviewId}") //리뷰 삭제
+	public String reviewDelete(@PathVariable Integer crtfc_upso_mgt_sno,@PathVariable Long reviewId) {
+		reviewService.reviewDelete(reviewId);
+		return "redirect:/api/{crtfc_upso_mgt_sno}";
+	}
 }

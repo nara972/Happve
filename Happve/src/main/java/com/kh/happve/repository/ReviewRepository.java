@@ -11,7 +11,7 @@ import com.kh.happve.entity.Review;
 
 
 @Transactional(readOnly=true)
-public interface ReviewRepository extends JpaRepository<Review, Integer>{
+public interface ReviewRepository extends JpaRepository<Review, Long>{
 	
 	List<Review> findByCrtfcUpsoMgtSno(Integer crtfcUpsoMgtSno);
 	
@@ -23,5 +23,8 @@ public interface ReviewRepository extends JpaRepository<Review, Integer>{
 
 	@Query(value = "select r from Review r order by regdate desc")
 	List<Review> findReviewsOrderByRegDateDesc();
+	
+	//리뷰 삭제
+	public void deleteById(Long reviewId);
 
 }

@@ -51,5 +51,13 @@ public class ReviewService {
 		List<Review> findAllReviews = reviewRepository.findReviewsOrderByRegDateDesc();
 		return findAllReviews;
 	}
+	
+	@Transactional
+	public void reviewDelete(Long reviewId) {
+		if(imageRepository.findByReviewId(reviewId)!=null) {
+			imageRepository.deleteAllByReviewId(reviewId);
+		}
+		reviewRepository.deleteById(reviewId);
+	}
 
 }
