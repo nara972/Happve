@@ -38,7 +38,7 @@
           <form th:action="@{/index/upSearch}" method="GET">
 
             <button type="submit" class="searchbutton"><div class="search">Search</div></button>
-            <input type="text" class="searchtextbox" value="지역,식당 또는 음식" name="keyword"><img class="texttext" src="css/searchresult/img/texttext@1x.png" />
+            <input type="text" class="searchtextbox" value="식당 또는 음식" name="keyword"><img class="texttext" src="css/searchresult/img/texttext@1x.png" />
           </form>
 
         </div>
@@ -114,7 +114,7 @@
               <!-- 검색된 식당 이름 출력 -->
               <p class="moreresname applesdgothicneo-regular-normal-star-dust-20px" th:text="${result.title}"></p>
               <!-- 상세페이지로 이동 버튼 -->
-              <form th:action="@{/detail}" method="post">
+              <form th:href="@{/api/{{result.restaurant_id}}}" method="get">
                 <button class="morebutton applesdgothicneo-regular-normal-star-dust-20px">더보기&gt;</button>
               </form>
             </div>
