@@ -18,16 +18,62 @@
         <div class="overlap-group">
 
 
-          <header class="header">
-            <h1 class="title">Happve</h1>
-            <div class="commu applesdgothicneo-medium-rhino-18px">평점 및 리뷰</div>
-            <div class="header-item applesdgothicneo-medium-rhino-18px">회원가입</div>
-            <div class="header-item applesdgothicneo-medium-rhino-18px">건의하기</div>
-            <div class="login">
-              <div class="overlap-group1">
-                <div class="loginback"></div>
-                <div class="logintext" action="/signup">로그인</div>
+                    <!-- <헤더> 평점 및 리뷰 / 회원가입 / 건의하기 / 로그인-->
+          <header class="header-unknown">
+            <div class="overlap-group">
+              <div class="header-buttons">
+    
+                <!-- 메인으로 -->
+                <form action="" method="get">
+                  <button class="header-title">Happve</button>
+                </form>
+                
+                <!-- 커뮤니티로 -->
+                <form action="" method="get">
+                  <button class="header-commu">평점 및 리뷰</button>
+                </form>
+                
+                <!-- 회원가입으로 -->
+                <form action="" method="get">
+                  <button class="header-signup">회원가입</button>
+                </form>
+                
+                <!-- 건의하기로 -->
+                <form action="" method="get">
+                  <button class="header-con">건의하기</button>
+                </form>
+                
+                <!-- 로그인 -->
+                <form action="" method="get">
+                  <button class="header-login">
+                    <div class="header-logintext">로그인</div>
+                  </button>
+                </form>
+                
               </div>
+              
+              <!-- 상단헤더검색 -->
+              <form action="" method="post">
+                <div class="header-search">
+      
+                  <!-- 검색 드롭다운 -->
+                  <select class="header-searchdropdown">
+                    <option value="area">지역</option>
+                    <option value="restaurant">식당</option>
+                    <option value="food">음식</option>
+                  </select>
+      
+                  <!-- 검색 인풋 -->
+                  <input type="text" class="header-searchinput" value="지역,식당 또는 음식 선택 후 검색">
+      
+                  <!-- 검색 버튼 -->
+                  <button class="header-searchbutton">
+                    <div class="header-searchbuttontext">Search</div>
+                  </button>
+                  
+                </div>
+              </form>
+    
             </div>
           </header>
 

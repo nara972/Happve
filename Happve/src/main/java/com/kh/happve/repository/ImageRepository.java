@@ -15,5 +15,9 @@ public interface ImageRepository extends JpaRepository<Image, Long>{
 	
 	//식당 고유 번호별 이미지 리스트
 	List<Image> findByCrtfcUpsoMgtSno(Integer reviewIdcrtfcUpsoMgtSno);
+	
+    void deleteAllByReviewId(Long reviewId);
+	
+	List<Image> findByReviewId(Long reviewId);
 
 }

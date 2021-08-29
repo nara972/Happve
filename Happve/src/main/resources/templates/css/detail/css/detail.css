@@ -1041,8 +1041,25 @@ a {
   height: 42px;
   justify-content: flex-end;
   margin-left: 264px;
+  margin-right: -85px;
   min-width: 82px;
   padding: 5.0px 12.0px;
+}
+
+.detail .reviewDelete {
+  background-color: var(--rhino);
+  height: 42px;
+  margin-top: 60px;
+  min-width: 82px;
+  padding: 5.0px 12.0px;
+
+  color: white;
+  font-family: var(--font-family-applesd_gothic_neo-light);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 300;
+  border: 0;
+  outline: 0;
 }
 
 .detail .overlap-group-3 {

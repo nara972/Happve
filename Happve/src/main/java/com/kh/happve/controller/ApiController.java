@@ -4,10 +4,12 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.happve.entity.Image;
+import com.kh.happve.entity.Member;
 import com.kh.happve.entity.RestaurantApi;
 import com.kh.happve.entity.Review;
 import com.kh.happve.service.ImageService;
 import com.kh.happve.service.ReviewService;
+import com.kh.happve.validator.CurrentAccount;
 
 import lombok.RequiredArgsConstructor;
 
@@ -42,8 +44,12 @@ public class ApiController {
 
 	
 	@RequestMapping("/{crtfc_upso_mgt_sno}")
-	public String basic(@PathVariable("crtfc_upso_mgt_sno") Integer crtfc_upso_mgt_sno,
+	public String basic(@PathVariable("crtfc_upso_mgt_sno") Integer crtfc_upso_mgt_sno,@CurrentAccount Member member,
 						Model model) {
+		
+		if(member != null) {
+			model.addAttribute(member);
+		}
 
 		StringBuffer result = new StringBuffer();
 		RestaurantApi ra = new RestaurantApi();
