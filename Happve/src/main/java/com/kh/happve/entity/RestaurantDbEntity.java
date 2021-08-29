@@ -23,7 +23,6 @@ import java.util.List;
 public class RestaurantDbEntity {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name="restaurant_id")
         private Long restaurantId; //식당 고유 id
 
