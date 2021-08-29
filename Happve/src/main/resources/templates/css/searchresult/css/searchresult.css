@@ -219,6 +219,8 @@
   line-height: 30px;
   min-height: 38px;
   white-space: nowrap;
+  
+  margin-right: 8px;
 }
 
 .searchresrult .flex-row-1 {
