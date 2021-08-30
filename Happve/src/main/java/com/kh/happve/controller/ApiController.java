@@ -43,7 +43,7 @@ public class ApiController {
 	private final ImageService imageService;
 
 	
-	@RequestMapping("/{crtfc_upso_mgt_sno}")
+	@GetMapping("/{crtfc_upso_mgt_sno}")
 	public String basic(@PathVariable("crtfc_upso_mgt_sno") Integer crtfc_upso_mgt_sno,@CurrentAccount Member member,
 						Model model) {
 		

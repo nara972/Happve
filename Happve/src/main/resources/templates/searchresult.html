@@ -152,12 +152,13 @@
               <p class="moreresname applesdgothicneo-regular-normal-star-dust-20px" th:text="${result.title}"></p>
 
 
-              <!-- 상세페이지로 이동 버튼 -->
 
-              <button class="morebutton applesdgothicneo-regular-normal-star-dust-20px" method="get"
-                      onclick="location.href='detail.html'"
-                      th:click="|location.href='@{/api/{crtfc_upso_mgt_sno}(crtfc_upso_mgt_sno=${result.restaurantId})}'|"
+
+              <!-- 상세페이지로 이동 버튼 -->
+              <button class="morebutton applesdgothicneo-regular-normal-star-dust-20px"
+                      th:onclick="|location.href='@{|/api/${result.restaurantId}}'|"
                       type="button">더보기</button>
+
 
             </div>
 

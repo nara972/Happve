@@ -65,27 +65,12 @@
               </form>
                 
               </div>
-              
-              <!-- 헤더검색 -->
-              <form action="" method="post">
-                <div class="header-search">
-      
-                  <!-- 검색 드롭다운 -->
-                  <select class="header-searchdropdown">
-                    <option value="area">지역</option>
-                    <option value="restaurant">식당</option>
-                    <option value="food">음식</option>
-                  </select>
-      
-                  <!-- 검색 인풋 -->
-                  <input type="text" class="header-searchinput" value="지역,식당 또는 음식 선택 후 검색">
-      
-                  <!-- 검색 버튼 -->
-                  <button class="header-searchbutton">
-                    <div class="header-searchbuttontext">Search</div>
-                  </button>
-                  
-                </div>
+
+              <!-- 상단검색 -->
+              <form th:action="@{/index/upSearch}" method="GET">
+
+                <button type="submit" class="searchbutton"><div class="search">Search</div></button>
+                <input type="text" class="searchtextbox" value="식당 또는 음식" name="keyword"><img class="texttext" src="css/searchresult/img/texttext@1x.png" />
               </form>
     
             </div>

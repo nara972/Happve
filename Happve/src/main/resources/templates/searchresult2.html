@@ -140,10 +140,14 @@
             <div class="morebox">
               <!-- 검색된 식당 이름 출력 -->
               <p class="moreresname applesdgothicneo-regular-normal-star-dust-20px" th:text="${result.title}"></p>
+
               <!-- 상세페이지로 이동 버튼 -->
-              <form th:action="@{/detail}" method="post">
-                <button class="morebutton applesdgothicneo-regular-normal-star-dust-20px">더보기&gt;</button>
-              </form>
+              <button class="morebutton applesdgothicneo-regular-normal-star-dust-20px"
+                      th:onclick="|location.href='@{|/api/${result.restaurantId}}'|"
+                      type="button">더보기</button>
+
+
+
             </div>
 
             <img class="infodataline" src="css/searchresult/img/infodataline-1@1x.png" />
