@@ -290,6 +290,8 @@
 
   background-color: transparent;
   min-width: 512px;
+  border: 0;
+  outline: 0;
 }
 
 .login .passinputext {
@@ -307,6 +309,8 @@
 
   background-color: transparent;
   min-width: 512px;
+  border: 0;
+  outline: 0;
 }
 
 .login .line9 {

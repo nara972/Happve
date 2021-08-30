@@ -28,22 +28,22 @@
               </form>
               
               <!-- 커뮤니티로 -->
-              <form th:action="@{/}" method="get">
+              <form th:action="@{/commu}" method="get">
                 <button class="header-commu">평점 및 리뷰</button>
               </form>
               
               <!-- 회원가입으로 -->
-              <form action="" method="get">
+              <form th:action="@{/signup}" method="get">
                 <button class="header-signup">회원가입</button>
               </form>
               
               <!-- 건의하기로 -->
-              <form action="" method="get">
+              <form th:action="@{/suggestion}" method="get">
                 <button class="header-con">건의하기</button>
               </form>
               
               <!-- 로그인 -->
-              <form action="@{/login}" method="get">
+              <form th:action="@{/login}" method="get">
                 <button class="header-login">
                   <div class="header-logintext">로그인</div>
                 </button>
