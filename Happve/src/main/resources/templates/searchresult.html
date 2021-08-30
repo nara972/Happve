@@ -69,7 +69,7 @@
               <form th:action="@{/index/upSearch}" method="GET">
 
                 <button type="submit" class="searchbutton"><div class="search">Search</div></button>
-                <input type="text" class="searchtextbox" value="식당 또는 음식" name="keyword"><img class="texttext" src="css/searchresult/img/texttext@1x.png" />
+                <input type="text" class="searchtextbox" placeholder="식당 또는 음식" name="keyword"><img class="texttext" src="css/searchresult/img/texttext@1x.png" />
               </form>
 
             </div>
@@ -121,13 +121,7 @@
             </div>
 
 
-            <!-- 즐겨찾기 버튼 로그인 안되있을 시 로그인 화면으로 유도-->
-            <form action="" method="post">
-              <button type="" class="bookmark">
-                <img class="bookmarkicon" src="css/searchresult/img/bookmarkicon-1@1x.png" />
-                <div class="bookmarktext applesdgothicneo-regular-normal-rhino-15px">즐겨찾기</div>
-              </button>
-            </form>
+            
 
           </div>
           <div class="flex-col-1">
@@ -149,7 +143,6 @@
             <div class="morebox">
 
               <!-- 검색된 식당 이름 출력 -->
-              <p class="moreresname applesdgothicneo-regular-normal-star-dust-20px" th:text="${result.title}"></p>
 
 
 
