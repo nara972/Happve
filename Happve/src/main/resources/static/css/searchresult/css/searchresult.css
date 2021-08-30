@@ -409,9 +409,10 @@
   line-height: 17px;
   margin-bottom: -3.5px;
   margin-left: 88px;
-  min-height: 22px;
-  min-width: 473px;
-  white-space: nowrap;
+  height: 22px;
+  width: 473px;
+  
+  word-wrap: break-word;
 }
 
 .searchresrult .morebox {

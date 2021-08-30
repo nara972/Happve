@@ -661,7 +661,7 @@
   display: flex;
   margin-left: 2.0px;
   margin-top: 70px;
-  min-width: 258px;
+  width: 258px;
 
   border: 0;
   outline: 0;
