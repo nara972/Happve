@@ -103,7 +103,7 @@ public class ApiController {
 			}
 
 			//전체 리뷰 수
-			model.addAttribute("replycnt",reviewService.replyCnt());
+			model.addAttribute("replycnt",reviewService.replyCnt(crtfc_upso_mgt_sno));
 
 			List<Integer> rating = new ArrayList<>();
 			List<Integer> integers = reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno);

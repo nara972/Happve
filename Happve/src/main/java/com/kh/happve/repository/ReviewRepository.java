@@ -15,8 +15,9 @@ public interface ReviewRepository extends JpaRepository<Review, Long>{
 	
 	List<Review> findByCrtfcUpsoMgtSno(Integer crtfcUpsoMgtSno);
 	
-	@Query(value="select count(r) from Review r")
-	Integer findByReviewId();
+	//상세페이지 별 리뷰 수
+	@Query(value="select count(r) from Review r where r.crtfcUpsoMgtSno=:crtfcUpsoMgtSno")
+	Integer findByReviewId(@Param("crtfcUpsoMgtSno") Integer crtfcUpsoMgtSno);
 	
 	@Query(value="select count(r) from Review r where r.crtfcUpsoMgtSno=:crtfcUpsoMgtSno group by r.rating order by rating asc")
 	List<Integer> findByRatingAndCrtfcUpsoMgtSno(@Param("crtfcUpsoMgtSno") Integer crtfcUpsoMgtSno);
