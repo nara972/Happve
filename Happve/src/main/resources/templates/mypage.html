@@ -32,7 +32,7 @@
               </form>
               
               <!-- 회원가입으로 -->
-              <form action="" method="get">
+              <form action="" method="get" sec:authorize="!isAuthenticated()">
                 <button class="header-signup">회원가입</button>
               </form>
               
@@ -48,7 +48,7 @@
               </form>
   
               <!-- 로그아웃 -->
-              <form action="" method="get">
+              <form th:action="@{/logout}" method="get" >
                 <button class="header-login">
                   <div class="header-logintext">로그아웃</div>
                 </button>
