@@ -93,58 +93,47 @@
             </div>
           </div>
 
-          <a href="mypagebookmark.html">
-            <div class="bookmarkbutton"><div class="bookmarktext">내 즐겨찾기</div></div></a>
-          <div class="mypagebutton"><div class="mypagetext applesdgothicneo-bold-white-28px">회원정보 수정</div></div>
+          <a th:href="@{|/mypage/bookmark/${member.memberId}|}">
+            <div class="bookmarkbutton">
+              
+              <div class="bookmarktext">
+            즐겨찾기
+            </div>
+           </div></a>
+          <div class="mypagebutton"><div class="mypagetext applesdgothicneo-bold-white-28px">회원정보  </div></div>
           <div class="mypagebox">
-            <div class="myinfotext applesdgothicneo-bold-white-28px">회원정보 수정</div>
+            <div class="myinfotext applesdgothicneo-bold-white-28px">회원정보</div>
 
             <div class="mypagebox-item">
-              <div class="email applesdgothicneo-regular-normal-white-14px">수정할 Email 주소</div>
+              <div class="email applesdgothicneo-regular-normal-white-14px">이메일</div>
 
               <!-- 이메일 인풋 -->
-              <input type="email" class="emailinputbox" value="이메일 주소를 입력하세요">
+              <div th:text="${member.email}"  class="emailinputbox">
 
-              <img class="line18" src="css/mypage/img/file--18@1x.png" />
+              <img class="line18" src="/css/mypage/img/file--18@1x.png" />
             </div>
-            <div class="passinput">
-              <div class="pass">현재 비밀번호</div>
+            <br>
+          <div class="email applesdgothicneo-regular-normal-white-14px">닉네임</div>
 
-              <!-- 현재비번 인풋 -->
-              <input type="password" class="passinputbox" value="비밀번호를 입력하세요">
+              <!-- 이메일 인풋 -->
+              <div th:text="${member.nickname}"  class="emailinputbox">
+
+              <img class="line18" th:src="/css/mypage/img/file--18@1x.png" />
+            </div>
+          
+            <div class="mypagebox-item">
               
-              <img class="line18-1" src="css/mypage/img/file--18@1x.png" />
-            </div>
-            <div class="modifipass">
-              <div class="pass">수정할 비밀번호</div>
-
-              <!-- 수정할 비번인풋 -->
-              <input type="password" class="passconfrimbox" value="비밀번호를 입력하세요"> 
-
-              <img class="line18-2" src="css/mypage/img/file--18@1x.png" />
-            </div>
-            <div class="mypagebox-item">
-              <div class="modifipasstext applesdgothicneo-regular-normal-white-14px">수정할 비밀번호 확인</div>
-
-              <!-- 수정할 비번확인 인풋 -->
-              <input type="password" class="emailinputbox-1" value="비밀번호를 입력하세요">
-
-              <img class="line18-3" src="css/mypage/img/file--18@1x.png" />
-            </div>
-            <div class="mypagebox-item">
-              <div class="vege applesdgothicneo-regular-normal-white-14px">채식주의자 유형 수정</div>
+              <div class="vege applesdgothicneo-regular-normal-white-14px">채식주의자 유형</div>
 
               <!-- 채식유형 인풋 -->
-              <input type="text" class="vegeinputbox" value="ex) 비건, 락토, 페스코 ..">
+               <div th:text="${member.vtype}"  class="emailinputbox">
 
-              <img class="x18" src="css/mypage/img/file--18@1x.png" />
+              <img class="x18" src="/css/mypage/img/file--18@1x.png" />
             </div>
-            <div class="myinfonoti applesdgothicneo-bold-white-28px">
-              회원정보를 수정합니다.<br />다시 한번 확인 해주세요.
-            </div>
+           
 
             <!-- 수정완료 버튼 -->
-            <form action="" method="post">
+            <form th:action="@{/mypage/updateprofile}" method="get">
               <button class="modifibutton">
                 <div class="overlap-group1-1">
                   <div class="modifiback"></div>

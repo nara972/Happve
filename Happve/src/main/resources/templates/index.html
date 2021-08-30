@@ -37,6 +37,10 @@
                 <button class="header-signup">회원가입</button>
               </form>
               
+               <form th:action="@{/mypage}" method="get" sec:authorize="isAuthenticated()">
+                <button class="header-signup">마이페이지</button>
+              </form>
+              
               <!-- 건의하기로 -->
               <form th:action="@{/suggestion}" method="get">
                 <button class="header-con">건의하기</button>
