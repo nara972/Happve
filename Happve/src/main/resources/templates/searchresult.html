@@ -153,9 +153,12 @@
 
 
               <!-- 상세페이지로 이동 버튼 -->
-              <form th:action="@{/api/${result.restaurant_id}}" method="get">
-                <button class="morebutton applesdgothicneo-regular-normal-star-dust-20px" type="submit">더보기&gt;</button>
-              </form>
+
+              <button class="morebutton applesdgothicneo-regular-normal-star-dust-20px" method="get"
+                      onclick="location.href='detail.html'"
+                      th:click="|location.href='@{/api/{crtfc_upso_mgt_sno}(crtfc_upso_mgt_sno=${result.restaurantId})}'|"
+                      type="button">더보기</button>
+
             </div>
 
             <img class="infodataline" src="css/searchresult/img/infodataline-1@1x.png" />
