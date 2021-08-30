@@ -37,6 +37,10 @@ public class ReviewService {
 	public int replyCnt(Integer crtfcUpsoMgtSno) {
 		return reviewRepository.findByReviewId(crtfcUpsoMgtSno);
 	}
+	
+	public double reviewAvg(Integer crtfcUpsoMgtSno) {
+		return reviewRepository.findByCrtfcUpsoMgtSno1(crtfcUpsoMgtSno);
+	}
 
 	public List<Integer> replycntByRatingandCrtfc(Integer crtfcUpsoMgtSno) {
 		return reviewRepository.findByRatingAndCrtfcUpsoMgtSno(crtfcUpsoMgtSno);

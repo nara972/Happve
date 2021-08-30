@@ -102,7 +102,7 @@
               </p>
               <!-- 별점 -->
               <div class="rating">
-                <p class="ratingpoint">4.4</p>
+                <p class="ratingpoint" th:text="${reviewavg}">4.4</p>
               </div>
             </div>
 
@@ -226,7 +226,7 @@
       <div class="reviewheader">
         <img class="line16" src="/css/detail/img/infodataline@1x.png" />
         <div class="flex-row-6">
-          <div class="reviewtotal applesdgothicneo-regular-normal-rhino-20px" th:text="|리뷰(${replycnt})|"></div>
+          <div class="reviewtotal applesdgothicneo-regular-normal-rhino-20px" th:text="|리뷰(${reviewcnt})|"></div>
           <div class="total applesdgothicneo-regular-normal-rhino-20px">전체(21)</div>
           <img class="line" src="/css/detail/img/line10@1x.png" />
           <div class="x5star applesdgothicneo-regular-normal-rhino-20px" th:text="|별5개(${5})|">별5개(5)</div>

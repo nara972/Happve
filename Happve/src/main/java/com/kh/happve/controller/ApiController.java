@@ -103,7 +103,10 @@ public class ApiController {
 			}
 
 			//전체 리뷰 수
-			model.addAttribute("replycnt",reviewService.replyCnt(crtfc_upso_mgt_sno));
+			model.addAttribute("reviewcnt",reviewService.replyCnt(crtfc_upso_mgt_sno));
+			
+			//식당별 별점 평균값
+			model.addAttribute("reviewavg",reviewService.reviewAvg(crtfc_upso_mgt_sno));
 
 			List<Integer> rating = new ArrayList<>();
 			List<Integer> integers = reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno);
