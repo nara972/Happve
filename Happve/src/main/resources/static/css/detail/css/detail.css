@@ -1,4 +1,31 @@
 /* screen - detail */
+.headermypage {
+  align-items: flex-end;
+  background-color: var(--blue-romance);
+  border-radius: 24px;
+  display: flex;
+  height: 48px;
+  justify-content: flex-end;
+  margin-left: 55px;
+  min-width: 48px;
+  padding: 6.1px;
+
+  border: 0;
+  outline: 0;
+}
+
+.icon-awesome-user-circle {
+  height: 35px;
+  object-fit: cover;
+  width: 35px;
+}
+
+.icon-awesome-user-circle {
+  height: 35px;
+  object-fit: cover;
+  width: 35px;
+}
+
 a {
   text-decoration: none;
 }

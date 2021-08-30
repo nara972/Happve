@@ -34,21 +34,33 @@
                 </form>
                 
                 <!-- 회원가입으로 -->
-                <form action="" method="get">
-                  <button class="header-signup">회원가입</button>
-                </form>
-                
-                <!-- 건의하기로 -->
-                <form action="" method="get">
-                  <button class="header-con">건의하기</button>
-                </form>
-                
-                <!-- 로그인 -->
-                <form action="" method="get">
-                  <button class="header-login">
-                    <div class="header-logintext">로그인</div>
-                  </button>
-                </form>
+              <form action="" method="get">
+                <button class="header-signup" sec:authorize="!isAuthenticated()">회원가입</button>
+              </form>
+
+              <!-- 건의하기로 -->
+              <form action="" method="get">
+                <button class="header-con">건의하기</button>
+              </form>
+              
+              <form th:action="@{/mypage}" method="get" sec:authorize="isAuthenticated()">
+                <button class="headermypage">
+                  <img class="icon-awesome-user-circle" src="/css/headerunknown/img/icon-awesome-user-circle-1@1x.png" />
+                </button>
+              </form>
+
+             <!-- 로그인 -->
+              <form th:action="@{/login}" method="get" sec:authorize="!isAuthenticated()">
+                <button class="header-login">
+                  <div class="header-logintext">로그인</div>
+                </button>
+              </form>
+              
+              <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+                <button class="header-login">
+                  <div class="header-logintext">로그아웃</div>
+                </button>
+              </form>
                 
               </div>
 
