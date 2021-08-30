@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=1920, maximum-scale=1.0" />
   <link rel="shortcut icon" type="detail/image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
   <meta name="og:type" content="website" />
+  <meta name="_csrf" th:content="${_csrf.token}">
+  <meta name="_csrf_header" th:content="${_csrf.headerName}">
   <meta name="twitter:card" content="photo" />
   <link rel="stylesheet" type="text/css" href="css/detail/css/detail.css" th:href="@{/css/detail/css/detail.css}" />
   <link rel="stylesheet" type="text/css" href="css/detail/css/styleguide.css"
@@ -156,12 +158,21 @@
           </div>
 
           <!-- 북마크버튼 -->
-          <form action="" method="post">
-            <button class="bookmark">
+          <span sec:authorize="!isAuthenticated()">
+            <button class="bookmark" th:onclick="|location.href='@{/login}'|">
               <img class="bookmarkicon" src="/css/detail/img/bookmarkicon@1x.png" />
               <div class="bookmarktext applesdgothicneo-regular-normal-rhino-15px">즐겨찾기</div>
             </button>
-          </form>
+            </span>
+            
+            <input type="hidden" id="resId" th:value="${ra.crtfc_upso_mgt_sno}">
+            <span sec:authorize="isAuthenticated()">
+            <input type="hidden" id="memberId" th:value="${member.memberId}">
+            <button class="bookmark" id="bookmarkBtn">
+              <img class="bookmarkicon" src="/css/detail/img/bookmarkicon@1x.png" />
+              <div class="bookmarktext applesdgothicneo-regular-normal-rhino-15px">즐겨찾기</div>
+            </button>
+            </span>
         </div>
 
         <div class="flex-col-3">
@@ -327,6 +338,43 @@
 
     </div>
   </div>
+  
+     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+      <script type="text/javascript">
+      $("#bookmarkBtn").on("click",function(){
+		  
+		  var restaurantId=$("#resId").val();
+		  var memberId=$("#memberId").val();
+		  
+		  $.ajax({
+			  type:"POST",
+			  url:"/bookmark/"+memberId+"/"+restaurantId,
+	            dataType:"text",
+	            headers : {
+	                "Content-type" : "application/json",
+	                "X-HTTP-Method-Override" : "POST"
+	            },
+	            data:JSON.stringify({
+	            	memberId:memberId,
+	            	restaurantId:restaurantId
+	            }),
+	            
+	            success:function(result){
+	            	if(result==="Create")
+	            	alert("즐겨찾기에 등록하였습니다.");
+	            	else
+	            	alert("즐겨찾기를 취소하였습니다.")
+	            }
+			  
+		  });//end ajax
+		  
+	  }); //end bookmarkBtn
+      
+      var token = $("meta[name='_csrf']").attr("content");
+      var header = $("meta[name='_csrf_header']").attr("content");
+      $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, token); });
+      
+      </script>
 </body>
 
 </html>

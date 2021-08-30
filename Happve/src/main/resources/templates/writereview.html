@@ -144,14 +144,14 @@
                   <label for="file_0" class="control-label"></label>
                   <input type="file" name="files" id="file_0" class="upload-hidden" onchange="changeFilename(this)" />
                 
-                  <button type="button" onclick="addFile()" class="addremoveButton">
+                  <button type="button" onclick="addFile()" >
                     <i class="fa fa-plus" aria-hidden="true"></i>
                   </button>
-                  <button type="button" onclick="removeFile(this)" class="addremoveButton">
+                  <button type="button" onclick="removeFile(this)" >
                     <i class="fa fa-minus" aria-hidden="true"></i>
                   </button>
                 </div>
-                <br>
+              
               </div>
 
             </div>
@@ -159,7 +159,7 @@
           <div class="flex-row-1">
 
                 <!-- 리뷰등록버튼 -->
-                <button class="uploadbutton">
+                <button id="btnDiv" class="uploadbutton">
                   <div class="overlap-group">
                     <div class="back"></div>
                     <div class="text applesdgothicneo-bold-rhino-18px">등록하기</div>
@@ -236,15 +236,15 @@
 						<label for="file_${fileId}" class="col-sm-2 control-label"></label>
 						<div class="col-sm-10">
 							<input type="text" class="upload-name" value="파일 찾기" readonly />
-							<label for="file_${fileId}" class="control-label">찾아보기</label>
+							<label for="file_${fileId}" class="control-label"></label>
 							<input type="file" name="files" id="file_${fileId}" class="upload-hidden" onchange="changeFilename(this)" />
 			
-							<button type="button" onclick="removeFile(this)" class="addremoveButton">
+							<button type="button" onclick="removeFile(this)">
 								<i class="fa fa-minus" aria-hidden="true"></i>
 							</button>
 						</div>
 					</div>
-					<br>
+					
 				`;
 			
 				$('#btnDiv').before(fileHtml);

@@ -6,9 +6,9 @@
     <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
     <meta name="og:type" content="website" />
     <meta name="twitter:card" content="photo" />
-    <link rel="stylesheet" type="text/css" href="css/mypage/css/mypagebookmark.css" th:href="@{/css/mypage/css/mypagebookmark.css}"/>
-    <link rel="stylesheet" type="text/css" href="css/mypage/css/styleguide.css" th:href="@{/css/mypage/css/styleguide.css}"/>
-    <link rel="stylesheet" type="text/css" href="css/mypage/css/globals.css" th:href="@{/css/mypage/css/globals.css}"/>
+    <link rel="stylesheet" type="text/css" href="/css/mypage/css/mypagebookmark.css" th:href="@{/css/mypage/css/mypagebookmark.css}"/>
+    <link rel="stylesheet" type="text/css" href="/css/mypage/css/styleguide.css" th:href="@{/css/mypage/css/styleguide.css}"/>
+    <link rel="stylesheet" type="text/css" href="/css/mypage/css/globals.css" th:href="@{/css/mypage/css/globals.css}"/>
     <meta name="author" content="AnimaApp.com - Design to code, Automated." />
   </head>
   <body style="margin: 0; background: #ffffff">
@@ -39,7 +39,7 @@
               
               <form action="" method="get">
                 <button class="headermypage">
-                  <img class="icon-awesome-user-circle" src="css/headerunknown/img/icon-awesome-user-circle-1@1x.png" />
+                  <img class="icon-awesome-user-circle" src="/css/headerunknown/img/icon-awesome-user-circle-1@1x.png" />
                 </button>
               </form>
   
@@ -81,11 +81,11 @@
 
           <div class="back"></div>
           <div class="flex-col-4">
-            <div class="resultbox-1">
+            <div class="resultbox-1" th:each="bookmarkresId:${bookmarkmemberlist}">
+              <div th:if="${bookmarkresId.restaurantId==bookmark.restaurantId}" th:each="bookmark:${bookmarklist}"> 
               <div class="flex-row">
-
                 <!-- 식당이름 -->
-                <div class="resulttitle applesdgothicneo-regular-normal-rhino-30px">식당이름이름</div>
+                <div class="resulttitle applesdgothicneo-regular-normal-rhino-30px" th:text="${bookmark.title}">식당이름이름</div>
                 <div class="rating">
 
                   <!-- 별점평균 -->
@@ -94,7 +94,7 @@
               </div>
               <div class="flex-row-1">
                 <div class="viewcount">
-                  <img class="viewicon" src="css/mypage/img/viewicon-1@1x.png" />
+                  <img class="viewicon" src="/css/mypage/img/viewicon-1@1x.png" />
 
                   <!-- 뷰어수 -->
                   <div class="viewcountnum applesdgothicneo-regular-normal-rhino-15px">3,232</div>
@@ -111,9 +111,9 @@
                 <div class="flex-col">
 
                   <!-- 도로명주소 -->
-                  <div class="addressold applesdgothicneo-regular-normal-rhino-17px">서울특별시 어디구 김수로 12-1</div>
+                  <div class="addressold applesdgothicneo-regular-normal-rhino-17px" th:text="${bookmark.address}">서울특별시 어디구 김수로 12-1</div>
                   <!-- 지번주소 -->
-                  <div class="addressstreet applesdgothicneo-regular-normal-rhino-17px">서울시 어디구 리기동1가 21-54</div>
+                  <div class="addressstreet applesdgothicneo-regular-normal-rhino-17px" th:text="${bookmark.roadAddress}">서울시 어디구 리기동1가 21-54</div>
 
                 </div>
               </div>
@@ -121,9 +121,10 @@
                 <div class="menutitle applesdgothicneo-regular-normal-rhino-17px">메뉴</div>
 
                 <!-- 메뉴 -->
-                <div class="menudata applesdgothicneo-regular-normal-rhino-17px">리코타베지&amp;아보카도샌드위치(락토,비건) / 플렉스 스테이크(락토,비건)</div>
+                <div class="menudata applesdgothicneo-regular-normal-rhino-17px" th:text="${bookmark.menu}">리코타베지&amp;아보카도샌드위치(락토,비건) / 플렉스 스테이크(락토,비건)</div>
 
               </div>
+            
               <div class="morebox">
 
                 <!-- 식당이름 -->
@@ -135,8 +136,9 @@
 
               </div>
               <img class="infodataline" src="css/mypage/img/infodataline-1@1x.png" />
+              </div>
             </div>
-            
+           
             <!-- <div class="resultbox-2">
               <div class="flex-row">
                 <div class="resulttitle applesdgothicneo-regular-normal-rhino-30px">식당이름이름</div>
