@@ -96,14 +96,14 @@
             <div class="flex-row-3">
               <!-- 식당이름 -->
               <p class="restitle">
-                <a href="item.html" th:text="${ra.upso_nm}"
+                <a class="restitle" href="item.html" th:text="${ra.upso_nm}"
                   th:href="@{/api/basic2/{crtfc_upso_mgt_sno}(crtfc_upso_mgt_sno=${ra.crtfc_upso_mgt_sno})}">
                   업소명입니다.</a>
               </p>
               <!-- 별점 -->
-              <div class="rating">
+<!--               <div class="rating">
                 <p class="ratingpoint" th:text="${reviewavg}">4.4</p>
-              </div>
+              </div> -->
             </div>
 
             <div class="flex-row-4">
@@ -293,10 +293,10 @@
 
       <!-- 더보기 -->
       <form action="" method="post">
-        <button class="morebutton">
+        <!-- <button class="morebutton">
           <div class="text-3 applesdgothicneo-regular-normal-blue-romance-20px">더보기</div>
           <img class="icon-ionic-ios-arrow-down" src="css/detail/img/icon-ionic-ios-arrow-down@1x.png" />
-        </button>
+        </button> -->
       </form>
 
       <footer class="footer">
