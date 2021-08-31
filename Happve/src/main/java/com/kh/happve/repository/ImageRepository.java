@@ -20,4 +20,6 @@ public interface ImageRepository extends JpaRepository<Image, Long>{
 	
 	List<Image> findByReviewId(Long reviewId);
 
+	List<Image> findImagesByReviewId(Long reviewId);
+
 }

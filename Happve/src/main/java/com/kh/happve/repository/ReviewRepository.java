@@ -28,6 +28,9 @@ public interface ReviewRepository extends JpaRepository<Review, Long>{
 
 	@Query(value = "select r from Review r order by regdate desc")
 	List<Review> findReviewsOrderByRegDateDesc();
+
+	@Query(value = "select c.upso_nm from RestaurantApi c where c.crtfc_upso_mgt_sno=:crtfcUpsoMgtSno")
+	String findUpso_nmByCrtfcUpsoMgtSno(@Param("crtfcUpsoMgtSno") Integer crtfcUpsoMgtSno);
 	
 	//리뷰 삭제
 	public void deleteById(Long reviewId);
