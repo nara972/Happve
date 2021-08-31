@@ -49,6 +49,10 @@
   width: 100%;
 }
 
+.emailinputbox{
+  margin-bottom: 10px;
+}
+
 .container-center-horizontal > * {
   flex-shrink: 0;
   pointer-events: auto;

@@ -12,6 +12,6 @@ public class SuggestionForm {
     @NotBlank
     private String email;
 
-    @NotBlank(message="내용을 입력해주세요")
+    @NotBlank
     private String content;
 }

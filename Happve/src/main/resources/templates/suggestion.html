@@ -12,6 +12,9 @@
     <meta name="author" content="AnimaApp.com - Design to code, Automated." />
   </head>
   <body style="margin: 0; background: #ffffff">
+  <style>
+    .field-error { color:darkorange; }
+  </style>
     <input type="hidden" id="anPageName" name="page" value="con" />
     <div class="container-center-horizontal">
       <div class="con screen">
@@ -99,18 +102,19 @@
 
               <!-- 건의사항 박스 -->
               <h2 style="color:darkorange" th:if="${param.status}" th:text="'의견 전달 완료!'"></h2>
-              <form action="/suggest" th:action="@{/suggest}" method="post" th:object="${suggestionForm}">
+              <form action="/suggestion" th:action="@{/suggestion}" method="post" th:object="${suggestionForm}">
                 <div class="emailinput">
                   <div class="text-6">연락받으실 이메일</div>
-                  <input th:field="*{email}"  id="email" name="email" type="email" value="이메일을 입력하세요" class="emailinputbox">
-                  <small style="color:darkorange" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</small>
+                  <input th:field="*{email}" th:errorclass="field-error" id="email" name="email" type="email" placeholder="이메일을 입력하세요" class="emailinputbox">
+                  <span class="field-error" th:errors="*{email}"> 이메일 오류 </span>
+                  <span class="field-error" th:errors="*{content}"> 컨텐츠 오류 </span>
                   <img class="x18" src="css/suggestion/img/file--18@1x.png" />
                 </div>
 
-                <textarea th:field="*{content}" name="content" id="context" class="contextarea">
+                <textarea th:field="*{content}" name="content" id="context" th:errorclass="field-error" class="contextarea">
                   내용을 입력하세요!
                 </textarea>
-                
+
                 <button type="submit" class="conbutton">
                   <div class="overlap-group2">
                     <div class="x240"></div>

@@ -21,4 +21,5 @@ public class ImageService {
 		return imageRepository.findByCrtfcUpsoMgtSno(crtfcUpsoMgtSno);
 	}
 
+
 }
