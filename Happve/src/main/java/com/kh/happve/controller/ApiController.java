@@ -43,7 +43,7 @@ public class ApiController {
 	private final ImageService imageService;
 
 	
-	@RequestMapping("/{crtfc_upso_mgt_sno}")
+	@GetMapping("/{crtfc_upso_mgt_sno}")
 	public String basic(@PathVariable("crtfc_upso_mgt_sno") Integer crtfc_upso_mgt_sno,@CurrentAccount Member member,
 						Model model) {
 		
@@ -103,7 +103,10 @@ public class ApiController {
 			}
 
 			//전체 리뷰 수
-			model.addAttribute("replycnt",reviewService.replyCnt());
+			model.addAttribute("reviewcnt",reviewService.replyCnt(crtfc_upso_mgt_sno));
+			
+			//식당별 별점 평균값
+			model.addAttribute("reviewavg",reviewService.reviewAvg(crtfc_upso_mgt_sno));
 
 			List<Integer> rating = new ArrayList<>();
 			List<Integer> integers = reviewService.replycntByRatingandCrtfc(crtfc_upso_mgt_sno);

@@ -39,8 +39,6 @@ public class Member {
 		
 		private String role; //관리자인지 일반회원인지 확인
 		
-		@Column(nullable=true)
-		@Lob @Basic(fetch = FetchType.EAGER)
-		private String profileImage;
+		
 
 }

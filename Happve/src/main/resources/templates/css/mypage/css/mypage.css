@@ -228,10 +228,10 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  left: 0;
   position: absolute;
-  top: 990px;
-  width: 1921px;
+  top: 913px;
+  /* width: 1921px; */
+  margin-left: -835px;
 }
 
 .mypage .x239 {
@@ -392,12 +392,13 @@
 .mypage .bookmarkbutton {
   align-items: flex-start;
   background-color: var(--white);
-  cursor: pointer;
+  /* cursor: pointer; */
   display: flex;
   height: 107px;
+  width: 262px;
   justify-content: flex-end;
   left: 0;
-  padding: 35.5px 63px;
+  padding: 35.5px 75px;
   position: absolute;
   top: 107px;
 }
@@ -418,17 +419,18 @@
   background-color: var(--rhino);
   display: flex;
   height: 107px;
+  width: 262px;
   justify-content: flex-end;
   left: 0;
-  padding: 35.5px 50px;
+  padding: 35.5px 75px;
   position: absolute;
   top: 0;
 }
 
 .mypage .mypagetext {
   letter-spacing: 0;
-  line-height: 36px;
-  min-height: 35px;
+  height: 36px;
+  height: 35px;
   white-space: nowrap;
 }
 
@@ -659,9 +661,9 @@
 .mypage .modifibutton {
   align-items: flex-start;
   display: flex;
-  margin-left: 2.0px;
+  margin-left: 120px;
   margin-top: 70px;
-  min-width: 258px;
+  width: 258px;
 
   border: 0;
   outline: 0;

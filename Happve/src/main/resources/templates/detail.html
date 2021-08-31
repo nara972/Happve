@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=1920, maximum-scale=1.0" />
   <link rel="shortcut icon" type="detail/image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
   <meta name="og:type" content="website" />
+  <meta name="_csrf" th:content="${_csrf.token}">
+  <meta name="_csrf_header" th:content="${_csrf.headerName}">
   <meta name="twitter:card" content="photo" />
   <link rel="stylesheet" type="text/css" href="css/detail/css/detail.css" th:href="@{/css/detail/css/detail.css}" />
   <link rel="stylesheet" type="text/css" href="css/detail/css/styleguide.css"
@@ -68,26 +70,11 @@
 
             </div>
 
-            <!-- 헤더검색 -->
-            <form action="" method="post">
-              <div class="header-search">
+            <!-- 상단검색 -->
+            <form th:action="@{/index/upSearch}" method="GET">
 
-                <!-- 검색 드롭다운 -->
-                <select class="header-searchdropdown">
-                  <option value="area">지역</option>
-                  <option value="restaurant">식당</option>
-                  <option value="food">음식</option>
-                </select>
-
-                <!-- 검색 인풋 -->
-                <input type="text" class="header-searchinput" value="지역,식당 또는 음식 선택 후 검색">
-
-                <!-- 검색 버튼 -->
-                <button class="header-searchbutton">
-                  <div class="header-searchbuttontext">Search</div>
-                </button>
-
-              </div>
+              <button type="submit" class="searchbutton"><div class="search">Search</div></button>
+              <input type="text" class="searchtextbox" placeholder="식당 또는 음식" name="keyword"><img class="texttext" src="css/searchresult/img/texttext@1x.png" />
             </form>
 
           </div>
@@ -115,7 +102,7 @@
               </p>
               <!-- 별점 -->
               <div class="rating">
-                <p class="ratingpoint">4.4</p>
+                <p class="ratingpoint" th:text="${reviewavg}">4.4</p>
               </div>
             </div>
 
@@ -143,25 +130,34 @@
           <!-- 리뷰쓰기버튼 -->
           <div sec:authorize="isAuthenticated()">
             <button class="reviewwrite" th:onclick="|location.href='@{|/api/${ra.crtfc_upso_mgt_sno}/review|}'|">
-              <img class="reviewwriteicon" src="css/detail/img/reviewwriteicon@1x.png" />
+              <img class="reviewwriteicon" src="/css/detail/img/reviewwriteicon@1x.png" />
               <div class="reviewwritetext applesdgothicneo-regular-normal-rhino-15px">리뷰쓰기</div>
             </button>
           </div>
 
           <div sec:authorize="!isAuthenticated()">
             <button class="reviewwrite" th:onclick="|location.href='@{/login}'|">
-              <img class="reviewwriteicon" src="css/detail/img/reviewwriteicon@1x.png" />
+              <img class="reviewwriteicon" src="/css/detail/img/reviewwriteicon@1x.png" />
               <div class="reviewwritetext applesdgothicneo-regular-normal-rhino-15px">리뷰쓰기</div>
             </button>
           </div>
 
           <!-- 북마크버튼 -->
-          <form action="" method="post">
-            <button class="bookmark">
-              <img class="bookmarkicon" src="css/detail/img/bookmarkicon@1x.png" />
+          <span sec:authorize="!isAuthenticated()">
+            <button class="bookmark" th:onclick="|location.href='@{/login}'|">
+              <img class="bookmarkicon" src="/css/detail/img/bookmarkicon@1x.png" />
               <div class="bookmarktext applesdgothicneo-regular-normal-rhino-15px">즐겨찾기</div>
             </button>
-          </form>
+            </span>
+            
+            <input type="hidden" id="resId" th:value="${ra.crtfc_upso_mgt_sno}">
+            <span sec:authorize="isAuthenticated()">
+            <input type="hidden" id="memberId" th:value="${member.memberId}">
+            <button class="bookmark" id="bookmarkBtn">
+              <img class="bookmarkicon" src="/css/detail/img/bookmarkicon@1x.png" />
+              <div class="bookmarktext applesdgothicneo-regular-normal-rhino-15px">즐겨찾기</div>
+            </button>
+            </span>
         </div>
 
         <div class="flex-col-3">
@@ -228,20 +224,20 @@
 
       <!-- 리뷰헤드 -->
       <div class="reviewheader">
-        <img class="line16" src="css/detail/img/infodataline@1x.png" />
+        <img class="line16" src="/css/detail/img/infodataline@1x.png" />
         <div class="flex-row-6">
-          <div class="reviewtotal applesdgothicneo-regular-normal-rhino-20px" th:text="${replycnt}"></div>
+          <div class="reviewtotal applesdgothicneo-regular-normal-rhino-20px" th:text="|리뷰(${reviewcnt})|"></div>
           <div class="total applesdgothicneo-regular-normal-rhino-20px">전체(21)</div>
-          <img class="line" src="css/detail/img/line10@1x.png" />
-          <div class="x5star applesdgothicneo-regular-normal-rhino-20px" th:text="${5}">별5개(5)</div>
-          <img class="line" src="css/detail/img/line10@1x.png" />
-          <div class="x4star applesdgothicneo-regular-normal-rhino-20px" th:text="${4}">별4개(10)</div>
-          <img class="line" src="css/detail/img/line10@1x.png" />
-          <div class="x3star applesdgothicneo-regular-normal-rhino-20px" th:text="${3}">별3개(1)</div>
-          <img class="line" src="css/detail/img/line10@1x.png" />
-          <div class="x2star applesdgothicneo-regular-normal-rhino-20px" th:text="${2}">별2개(0)</div>
-          <img class="line" src="css/detail/img/line10@1x.png" />
-          <div class="x1star applesdgothicneo-regular-normal-rhino-20px" th:text="${1}">별1개(0)</div>
+          <img class="line" src="/css/detail/img/line10@1x.png" />
+          <div class="x5star applesdgothicneo-regular-normal-rhino-20px" th:text="|별5개(${5})|">별5개(5)</div>
+          <img class="line" src="/css/detail/img/line10@1x.png" />
+          <div class="x4star applesdgothicneo-regular-normal-rhino-20px" th:text="|별5개(${4})|">별4개(10)</div>
+          <img class="line" src="/css/detail/img/line10@1x.png" />
+          <div class="x3star applesdgothicneo-regular-normal-rhino-20px" th:text="|별5개(${3})|">별3개(1)</div>
+          <img class="line" src="/css/detail/img/line10@1x.png" />
+          <div class="x2star applesdgothicneo-regular-normal-rhino-20px" th:text="|별5개(${2})|">별2개(0)</div>
+          <img class="line" src="/css/detail/img/line10@1x.png" />
+          <div class="x1star applesdgothicneo-regular-normal-rhino-20px" th:text="|별5개(${1})|">별1개(0)</div>
         </div>
       </div>
 
@@ -253,7 +249,7 @@
             <p class="reviewuser applesdgothicneo-regular-normal-rhino-15px" th:text="${review.member.nickname}"></p>
             <!-- 유저가쓴 리뷰 수 -->
             <div class="reviewwritecount1">
-              <img class="reviewwritecounticon" src="css/detail/img/reviewwritecounticon1@1x.png" />
+              <img class="reviewwritecounticon" src="/css/detail/img/reviewwritecounticon1@1x.png" />
               <p class="reviewwritecountnum applesdgothicneo-regular-normal-rhino-12px">21</p>
             </div>
           </div>
@@ -277,9 +273,9 @@
           <!-- 오른쪽 별 -->
           <div class="reviewrating">
             <div class="overlap-group-3">
-              <p class="reviewratingtext applesdgothicneo-regular-normal-blue-romance-20px" th:text="${review.rating}">
+              <p class="reviewratingtext applesdgothicneo-regular-normal-blue-romance-20px" th:text="|${review.rating}개|">
               </p>
-              <img class="staricon" src="css/detail/img/staricon1@1x.png" />
+              <img class="staricon" src="/css/detail/img/staricon1@1x.png" />
             </div>
           </div>
           
@@ -327,6 +323,43 @@
 
     </div>
   </div>
+  
+     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+      <script type="text/javascript">
+      $("#bookmarkBtn").on("click",function(){
+		  
+		  var restaurantId=$("#resId").val();
+		  var memberId=$("#memberId").val();
+		  
+		  $.ajax({
+			  type:"POST",
+			  url:"/bookmark/"+memberId+"/"+restaurantId,
+	            dataType:"text",
+	            headers : {
+	                "Content-type" : "application/json",
+	                "X-HTTP-Method-Override" : "POST"
+	            },
+	            data:JSON.stringify({
+	            	memberId:memberId,
+	            	restaurantId:restaurantId
+	            }),
+	            
+	            success:function(result){
+	            	if(result==="Create")
+	            	alert("즐겨찾기에 등록하였습니다.");
+	            	else
+	            	alert("즐겨찾기를 취소하였습니다.")
+	            }
+			  
+		  });//end ajax
+		  
+	  }); //end bookmarkBtn
+      
+      var token = $("meta[name='_csrf']").attr("content");
+      var header = $("meta[name='_csrf_header']").attr("content");
+      $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, token); });
+      
+      </script>
 </body>
 
 </html>

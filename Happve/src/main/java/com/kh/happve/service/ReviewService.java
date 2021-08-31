@@ -34,8 +34,12 @@ public class ReviewService {
 		imageRepository.saveAll(fileUtils.uploadFiles(files, review.getReviewId(),review.getCrtfcUpsoMgtSno()));
 	}
 
-	public int replyCnt() {
-		return reviewRepository.findByReviewId();
+	public int replyCnt(Integer crtfcUpsoMgtSno) {
+		return reviewRepository.findByReviewId(crtfcUpsoMgtSno);
+	}
+	
+	public double reviewAvg(Integer crtfcUpsoMgtSno) {
+		return reviewRepository.findByCrtfcUpsoMgtSno1(crtfcUpsoMgtSno);
 	}
 
 	public List<Integer> replycntByRatingandCrtfc(Integer crtfcUpsoMgtSno) {

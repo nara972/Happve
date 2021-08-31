@@ -63,13 +63,8 @@
               </form>
               
             </div>
-            
-            <!-- 헤더검색 -->
-            <form action="" method="post">
-              <div class="header-search">
-                        
-              </div>
-            </form>
+
+
   
           </div>
         </header>
@@ -89,7 +84,7 @@
 
               </select>
 
-              <input type="text" class="searchtextbox1" value="식당 또는 음식 검색" name="keyword"></input>
+              <input type="text" class="searchtextbox1" placeholder="식당 또는 음식 검색" name="keyword"></input>
               <button type="submit" class="searchbutton1"><div class="search">Search</div></button>
             </form>
 
@@ -211,7 +206,7 @@
 
 
       <!-- 검색2 22222-->
-      <form th:action="@{/index/search}" method="GET">
+      <form th:action="@{/index/upSearch}" method="GET">
         <div class="flex-row-2">
           <div class="bottomtext">건강한 한끼의 채식을 시작으로<br />많은 야생동물과 우리 인간을 살릴 수 있습니다.</div>
 
@@ -222,7 +217,7 @@
 
           </select>
 
-          <input class="searchtextbox2" value="지역,식당 또는 음식" name="keyword"></input>
+          <input class="searchtextbox2" value="식당 또는 음식" name="keyword"></input>
           <button type="submit" class="searchbutton2"><div class="search">Search</div></button>
 
         </div>
