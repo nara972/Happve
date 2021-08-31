@@ -36,7 +36,7 @@ public class BookmarkService {
 		return bookmarkRepository.findByMemberIdAndRestaurantId(memberId, restaurantId);
 	}
 
-	public Bookmark BookmarkResId(Long memberId) {
+	public List<Bookmark> BookmarkResId(Long memberId) {
 		return bookmarkRepository.findByMemberId(memberId);
 	}
 
