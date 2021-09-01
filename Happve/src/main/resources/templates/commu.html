@@ -28,7 +28,7 @@
               </form>
               
               <!-- 커뮤니티로 -->
-              <form th:action="@{/commu}" method="get">
+              <form th:action="@{/api/reviewList}" method="get">
                 <button class="header-commu">평점 및 리뷰</button>
               </form>
               
@@ -87,45 +87,38 @@
 
         <!-- 리뷰1 -->
 
-        <div class="review1" th:each="review:${reviewList}">
+        <div class="review1" th:each="reviewList:${reviewForCommu}">
 
           <div class="flex-col">
             <div class="reviewname">
               <div class="overlap-group7">
                 <div class="nameback"></div>
                 <!-- 리뷰 사용자 이름 -->
-                <div class="name komet-regular-normal-rhino-14px" th:text="${review.member.nickname}" >호박고구마</div>
+                <div class="name komet-regular-normal-rhino-14px" th:text="*{reviewList.review.member.nickname}" >호박고구마</div>
               </div>
             </div>
             <!-- 리뷰 내용 -->
-            <a href="item.html" th:href="@{/api/{crtfc_upso_mgt_sno}(crtfc_upso_mgt_sno=${review.crtfcUpsoMgtSno})}">
-            <p class="content applesdgothicneo-regular-normal-white-15px" th:text="${review.content}">
+            <a href="item.html" th:href="@{/api/{crtfc_upso_mgt_sno}(crtfc_upso_mgt_sno=${reviewList.review.crtfcUpsoMgtSno})}">
+            <p class="content applesdgothicneo-regular-normal-white-15px" th:text="*{reviewList.review.content}">
               맛있다맛있다맛있다 맛있다<br />맛있다맛있다맛있다맛있 맛있다맛있다맛있다맛있다맛있다 맛있다맛있다
               맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다.
               맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다
               맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있맛있다맛있다맛있다맛있다맛있다맛있다맛있다<br />맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다
             </p></a>
 
-            <div class="flex-row">
+            <div class="flex-row" >
               <!-- 이미지1 -->
-              <div class="pic1r border-1px-dove-gray"></div>
-              <!-- 이미지2 -->
-              <div class="pic2r1 border-1px-dove-gray"></div>
-              <!-- 이미지3 -->
-              <div class="pic3r1 border-1px-dove-gray"></div>
-              <!-- 이미지4 -->
-              <div class="pic4r1 border-1px-dove-gray"></div>
-
+              <img class="pic1r border-1px-dove-gray" th:each="image : ${reviewList.image}" th:src="'/getFiles/'+${image}"></img>
             </div>
           </div>
           <div class="flex-col-1">
             <!-- 날짜 -->
-            <p class="date applesdgothicneo-regular-normal-white-15px" th:text="${review.regdate}">2021-01–01</p>
+            <p class="date applesdgothicneo-regular-normal-white-15px" th:text="${reviewList.review.regdate}">2021-01–01</p>
 
             <!-- 별 점수 -->
             <div class="reviewrating">
               <div class="overlap-group2">
-                <p class="ratingtext applesdgothicneo-regular-normal-rhino-20px" th:text="${review.rating}">3개</p>
+                <p class="ratingtext applesdgothicneo-regular-normal-rhino-20px" th:text="${reviewList.review.rating}">3개</p>
                 <img class="ratingicon" src="commu/img/ratingicon1@1x.png" />
               </div>
             </div>

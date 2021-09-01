@@ -1,6 +1,7 @@
 package com.kh.happve.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +13,7 @@ import com.kh.happve.entity.Review;
 
 @Transactional(readOnly=true)
 public interface ReviewRepository extends JpaRepository<Review, Long>{
-	
+
 	@Query(value = "select r from Review r where r.crtfcUpsoMgtSno=:crtfcUpsoMgtSno order by regdate desc")
 	List<Review> findByCrtfcUpsoMgtSno(Integer crtfcUpsoMgtSno);
 	
@@ -28,9 +29,6 @@ public interface ReviewRepository extends JpaRepository<Review, Long>{
 
 	@Query(value = "select r from Review r order by regdate desc")
 	List<Review> findReviewsOrderByRegDateDesc();
-
-	@Query(value = "select c.upso_nm from RestaurantApi c where c.crtfc_upso_mgt_sno=:crtfcUpsoMgtSno")
-	String findUpso_nmByCrtfcUpsoMgtSno(@Param("crtfcUpsoMgtSno") Integer crtfcUpsoMgtSno);
 	
 	//리뷰 삭제
 	public void deleteById(Long reviewId);

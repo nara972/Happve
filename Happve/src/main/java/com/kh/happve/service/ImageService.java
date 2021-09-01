@@ -22,10 +22,4 @@ public class ImageService {
 		return imageRepository.findByCrtfcUpsoMgtSno(crtfcUpsoMgtSno);
 	}
 
-	public List<String> findImage(Long reviewId){
-		List<String> imageNameList = new ArrayList<>();
-		imageRepository.findImagesByReviewId(reviewId).stream().limit(4).filter(u-> u != null).map(a -> a.getSaveName()).forEach(m-> imageNameList.add(m));
-		return imageNameList;
-	}
-
 }

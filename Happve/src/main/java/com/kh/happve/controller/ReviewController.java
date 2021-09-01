@@ -5,11 +5,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.validation.Valid;
 
+import com.kh.happve.dto.CommuDTO;
+import com.kh.happve.entity.Image;
 import com.kh.happve.entity.Review;
+import com.kh.happve.service.CommuService;
+import com.kh.happve.service.ImageService;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -34,9 +41,12 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/api")
+@Slf4j
 public class ReviewController {
 	
 	private final ReviewService reviewService;
+	private final ImageService imageService;
+	private final CommuService commuService;
 
 	@GetMapping("/{crtfc_upso_mgt_sno}/review")
 	public String review(@PathVariable Integer crtfc_upso_mgt_sno, Model model, @CurrentAccount Member member) {
@@ -106,8 +116,9 @@ public class ReviewController {
 
 	@GetMapping("/reviewList")  // 커뮤니티 (리뷰 리스트)
 	public String reviewList(Model model){
-		List<Review> reviewList = reviewService.findAllReviews();
-		model.addAttribute("reviewList",reviewList);
+		List<CommuDTO> reviewForCommu = commuService.findReviewForCommu();
+		log.info("reviewForCommu.getReview()={}",reviewForCommu.get(0).getReview().getReviewId());
+		model.addAttribute("reviewForCommu",reviewForCommu);
 		return "commu";
 	}
 	

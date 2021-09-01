@@ -56,7 +56,7 @@ public class ApiController {
 		JSONArray rowrow = null;
 
 		try {
-			StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088"); /*URL 각팀별로 가져오려는 공공데이터 엔드포인트 주소 , 샘플-무더위쉼터 엔드포인트*/
+			StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088"); /*URL 가져오려는 공공데이터 엔드포인트 주소 */
 			urlBuilder.append("/" + "6f4a424463716c773834794d516d44"); /*Service Key 공공데이터포털에서 받은 인증키*/
 			urlBuilder.append("/" + URLEncoder.encode("json", "UTF-8")); /*호출문서 형태*/
 			urlBuilder.append("/" + URLEncoder.encode("CrtfcUpsoInfo", "UTF-8")); /*서비스명*/
@@ -94,12 +94,9 @@ public class ApiController {
 			for(int i =0; i< rowrow.size(); i++) {
 				arrayToJson = (JSONObject) rowrow.get(i);
 
-				System.out.println("arrayToJson ===> " + arrayToJson);
 				ra = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
 
 				log.info("arrayToJson ={}", arrayToJson);
-				ra = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
-
 			}
 
 			//전체 리뷰 수
@@ -165,9 +162,6 @@ public class ApiController {
 			for(int i =0; i< jsonArray.size(); i++){
 				arrayToJson = (JSONObject) jsonArray.get(i);
 				System.out.println("arrayToJson ===> " + arrayToJson);
-
-				restaurant = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
-
 				restaurant = mapper.readValue(arrayToJson.toString(), RestaurantApi.class);
 
 				list.add(restaurant);
