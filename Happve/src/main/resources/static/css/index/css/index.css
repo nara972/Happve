@@ -183,13 +183,13 @@
   border-radius: 100px;
   display: flex;
   height: 60px;
-  width: 400x;
+  width: 390px;
   left: 1050px;
   padding: 15px 29px;
   position: absolute;
   top: 446px;
   
-  color: lightgray;
+  color: var(--rhino-2);
   font-family: var(--font-family-applesd_gothic_neo-medium);
   font-size: var(--font-size-s);
   font-style: normal;
@@ -790,7 +790,7 @@
   width: 434px;
   padding: 15px 29px;
 
-  color: lightgray;
+  color: var(--rhino-2);
   font-family: var(--font-family-applesd_gothic_neo-medium);
   font-size: var(--font-size-s);
   font-style: normal;

@@ -183,6 +183,15 @@ a {
   top: 43px;
   border: 0;
   outline: 0;
+  
+  color: var(--blue-romance);
+  font-family: var(--font-family-applesd_gothic_neo-light);
+  font-size: var(--font-size-xl);
+  font-style: normal;
+  font-weight: 300;
+  border: 0;
+  outline: 0;
+
 }
 
 .detail .searchtext {
@@ -750,6 +759,7 @@ a {
   height: 373px;
   object-fit: cover;
   width: 1079px;
+  margin-top: 20px;
 }
 
 .detail .reviewheader {
