@@ -204,17 +204,16 @@
           <div id="contents">
             <form method="get" th:action="@{/map}">
 
-              <script type="text/javascript"
-                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2ac1fa2c91bdde93952b37975c3ea8ac"></script>
+              <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2ac1fa2c91bdde93952b37975c3ea8ac"></script>
               <script th:inline="javascript">
-                var xId = [[${ ra.x_cnts }]]
-                var yId = [[${ ra.y_dnts }]]
+                var xId = [[${ra.x_cnts}]]
+                var yId = [[${ra.y_dnts}]]
 
                 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-                  mapOption = {
-                    center: new kakao.maps.LatLng(yId, xId), // 지도의 중심좌표
-                    level: 3 // 지도의 확대 레벨
-                  };
+                        mapOption = {
+                          center: new kakao.maps.LatLng(yId, xId), // 지도의 중심좌표
+                          level: 3 // 지도의 확대 레벨
+                        };
                 var map = new kakao.maps.Map(mapContainer, mapOption);
               </script>
             </form>
