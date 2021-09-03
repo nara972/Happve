@@ -48,7 +48,7 @@ public class RestaurantController {
 
             }else{
 
-                return "errorpage";
+                return "error";
             }
 
 
@@ -64,11 +64,11 @@ public class RestaurantController {
 
             }else{
 
-                return "errorpage";
+                return "error";
             }
         }
 
-        return "errorpage";  //오류페이지
+        return "error";  //오류페이지
     }
 
     //상단 검색 (식당+메뉴)
@@ -87,7 +87,7 @@ public class RestaurantController {
             //키워드 없으면 오류페이지
         } else {
 
-            return "errorpage";
+            return "error";
         }
     }
 }
