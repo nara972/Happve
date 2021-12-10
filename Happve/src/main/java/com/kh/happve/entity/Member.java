@@ -1,5 +1,8 @@
 package com.kh.happve.entity;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,6 +42,17 @@ public class Member {
 		
 		private String role; //관리자인지 일반회원인지 확인
 		
+		private String emailCheckToken;
 		
-
+		private LocalDateTime emailCheckTokenGeneratedAt;
+		
+		public void generateEmailCheckToken() {
+			this.emailCheckToken=UUID.randomUUID().toString();
+			this.emailCheckTokenGeneratedAt=LocalDateTime.now();
+		}
+		
+		public boolean isValidToken(String token) {
+			return this.emailCheckToken.equals(token);
+		}
+		
 }

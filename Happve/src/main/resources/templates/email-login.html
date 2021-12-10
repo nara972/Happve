@@ -70,44 +70,29 @@
 				</div>
 
 				<div class="loginbox">
-					<div class="logintext-1">로그인</div>
+				<div th:if="${message}" class="alert alert-info alert-dismissible fade show mt-3" role="alert">
+                <span th:text="${message}">완료</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+					<div class="logintext-1">패스워드 없이 로그인</div>
 
-					<form th:action="@{/login}" method="post">
+					<form th:action="@{/email-login}" method="post">
 						<!-- id입력 -->
 						<div class="idinput">
-							<div class="id">닉네임 또는 이메일</div>
+							<div class="id">가입할 때 사용한 이메일</div>
 
-							<input id="username" name="username" type="text"
-								class="idinputext" placeholder="이메일 또는 닉네임을 입력하세요"></input>
+							<input id="username" name="email" type="text"
+								class="idinputext" placeholder="가입할 때 사용한 이메일을 입력하세요"></input>
 							<!--  <small style="color: white" class="invalid-feedback">이메일 또는 닉네임을 입력하세요</small><br> -->
 							<img class="line9" src="css/login/img/line18@1x.png" />
 						</div>
 
-						<!-- 비밀번호입력 -->
-						<div class="passinput">
-							<div class="pass">비밀번호</div>
-							<input id="password" name="password" type="password"
-								class="passinputext" placeholder="비밀번호를 입력하세요"></input> <img
-								class="line18" src="css/login/img/line18@1x.png" />
-						</div>
-						<div>
-							<br> <input id="rememberMe" type="checkbox"
-								name="remember-me" checked /> <label class="textmessage" style="color: white"
-								for="rememberMe">로그인 유지</label>
-						</div>
-						<br><br>
-						
-							<div class="id">비밀번호가 기억이 나지않는다면,
-							<a style="color: gray" th:href="@{/email-login}">패스워드 없이 로그인하기</a></div>
-						
-						
-						<div th:if="${param.error}" role="alert">
-							<p class="textmessage" style="color: white">이메일(또는 닉네임)과 패스워드가 정확하지 않습니다.</p>
-						</div>
 						<button class="loginbutton">
 							<div class="overlap-group2-1">
 								<div class="logingbuttonback"></div>
-								<div class="loginbuttontext">로그인 하기</div>
+								<div class="loginbuttontext">로그인링크 보내기</div>
 							</div>
 						</button>
 					</form>

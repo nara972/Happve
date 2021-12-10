@@ -9,11 +9,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.happve.dto.PasswordForm;
 import com.kh.happve.dto.ProfileForm;
 import com.kh.happve.dto.SignUpForm;
 import com.kh.happve.entity.Member;
+import com.kh.happve.repository.MemberRepository;
 import com.kh.happve.service.MemberService;
 import com.kh.happve.validator.CurrentAccount;
 import com.kh.happve.validator.PasswordFormValidator;
@@ -31,6 +33,7 @@ public class MemberController {
 	private final ProfileFormValidator profileValidator;
 	private final PasswordFormValidator passwordValidator;
 	private final MemberService memberService;
+	private final MemberRepository memberRepository;
 	
 	@GetMapping("/admin")
 	public String adminPage(@CurrentAccount Member member) {
@@ -103,5 +106,31 @@ public class MemberController {
 				memberService.updatePassword(member, passwordForm.getNewPassword());
 				return "redirect:/mypage";
 			}
+			
+			//비밀번호 없이 로그인하기
+			@GetMapping("/email-login")
+			public String emailLoginForm() {
+				return "email-login";
+			}
+			
+			@PostMapping("/email-login")
+			public String sendEmailLoginLink(String email,Model model,RedirectAttributes attributes) {
+				Member member=memberRepository.findByEmail(email);
+				if(member==null) {
+					model.addAttribute("error","유효한 이메일이 아닙니다.");
+					return "email-login";
+				}
+				memberService.sendLoginLink(member);
+				attributes.addFlashAttribute("message","이메일 인증 메일을 발송했습니다.");
+				return "redirect:/email-login";
+			}
+		
+			@GetMapping("/check-email-token")
+			public String checkEmailToken(String token,String email,Model model) {
+				Member member=memberRepository.findByEmail(email);
+				memberService.login(member);
+				return "index";
+			}
+			
 
 }
