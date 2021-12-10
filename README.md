@@ -38,11 +38,13 @@ Validator 인터페이스를 이용하여 중복 이메일, 닉네임 여부 에
 
 <br>
 
-🖱️로그인
+🖱️로그인 & 이메일 로그인
 
 닉네임 또는 이메일, 비밀번호를 입력 받아 동작  
 유효하지 않을 경우 메시지를 출력     
 로그인 상태 유지 기능을 사용하기 위해 스프링 시큐리티 remember me를 이용하여 구현
+MimeMessage와 SimpleMailMessage에서 문자열 to,subject,text만 빼서 EmailMessage라는 것으로 추상화하고, 
+EmailService라는 클래스를 만들어 profile이 local인지 dev인지 확인 후에 실제로 메일을 보내 이메일 로그인을 구현
 
 <br>
 
